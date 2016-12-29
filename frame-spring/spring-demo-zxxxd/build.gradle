@@ -5,5 +5,12 @@ dependencies {
 
     compile "org.springframework:spring-context:$springVersion"
     compile "org.springframework:spring-aop:$springVersion"
+    compile "org.springframework:spring-core:$springVersion"
+    compile "org.springframework:spring-beans:$springVersion"
+    compile "org.springframework:spring-tx:$springVersion"
+    compile "org.springframework:spring-web:$springVersion"
+    compile "org.springframework:spring-webmvc:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+    compile "commons-logging:commons-logging:$loggingVersion"
     compile "org.springframework:spring-test:$springVersion"
 }
