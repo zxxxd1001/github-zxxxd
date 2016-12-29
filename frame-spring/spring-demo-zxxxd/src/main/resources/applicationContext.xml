@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="date1" class="java.util.Date"></bean>
+    <bean id="date2" class="java.util.Date"></bean>
+
+    <!-- 采用new GregorianCalendar(),构造方法 -->
+    <bean id="GregorianCalendar1" class="java.util.GregorianCalendar"></bean>
+    <!-- 采用GregorianCalendar1.getInstance(),静态工厂方法 -->
+    <bean id="GregorianCalendar2" class="java.util.Calendar" factory-method="getInstance"></bean>
+    <!-- 采用GregorianCalendar2.getTime(),对象工厂方法 -->
+    <bean id="date3" factory-bean="GregorianCalendar2" factory-method="getTime"></bean>
+
+
+    <bean id="lifecycle" scope="singleton" lazy-init="true" init-method="init"
+          destroy-method="beanDestroy" class="bean.entity.BeanLifecycle">
+
+    </bean>
+
+    <!--set注入-->
+    <bean id="computer" class="bean.entity.Computer">
+        <property name="cpu" value="i7"></property>
+        <property name="hdd" value="500G"></property>
+        <property name="mainBord" value="华硕"></property>
+    </bean>
+    <!--构造器注入-->
+    <bean id="phone" class="bean.entity.Phone">
+        <constructor-arg index="0" value="i7"></constructor-arg>
+        <constructor-arg index="1" value="32G"></constructor-arg>
+    </bean>
+
+    <!--引用类型通过set方式注入-->
+    <bean id="person" class="bean.entity.Person">
+        <property name="computer" ref="computer"></property>
+        <property name="phone" ref="phone"></property>
+    </bean>
+</beans>
