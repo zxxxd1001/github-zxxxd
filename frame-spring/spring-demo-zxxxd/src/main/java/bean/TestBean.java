@@ -1,13 +1,9 @@
 package bean;
 
-import bean.entity.BeanLifecycle;
-import bean.entity.Computer;
-import bean.entity.Person;
-import bean.entity.Phone;
+import bean.entity.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -24,10 +20,10 @@ public class TestBean{
          */
         System.out.println(TestBean.class.getResource("").getPath());
         ApplicationContext ac=null;
-        ac=new ClassPathXmlApplicationContext("applicationContext.xml");
+        ac=new ClassPathXmlApplicationContext("applicationContextBean.xml");
         /*
         * 这样写在打包完成后不能运行 不一定在这个指定目录 路径问题
-        * ac=new FileSystemXmlApplicationContext("spring-demo-zxxxd/src/main/applicationContext.xml");
+        * ac=new FileSystemXmlApplicationContext("spring-demo-zxxxd/src/main/applicationContextBean.xml");
         */
 
         Computer c=ac.getBean("computer",Computer.class);
@@ -54,12 +50,21 @@ public class TestBean{
 
         System.out.println("------------------------------------");
 
-        AbstractApplicationContext aac=new ClassPathXmlApplicationContext("applicationContext.xml");
+        AbstractApplicationContext aac=new ClassPathXmlApplicationContext("applicationContextBean.xml");
         BeanLifecycle beanLifecycle=aac.getBean("lifecycle",BeanLifecycle.class);
         beanLifecycle.execute();
         BeanLifecycle beanLifecycle2=aac.getBean("lifecycle",BeanLifecycle.class);
         System.out.println("是否为单利："+(beanLifecycle==beanLifecycle2));
         aac.close();
 
+        System.out.println("------------------------------------");
+
+        MessageBean messageBean=ac.getBean("message",MessageBean.class);
+        messageBean.toString();
+
+        System.out.println("------------------------------------");
+
+        MessageBean messageTwo=ac.getBean("messageTwo",MessageBean.class);
+        messageTwo.toString();
     }
 }
