@@ -4,6 +4,7 @@ package com.company.eventDelegateModel;
  * Created by zhangxuedong on 2017/2/20.
  */
 public abstract class Notifier {
+
     private EventHandler eventHandler=new EventHandler();
 
     public EventHandler getEventHandler() {
