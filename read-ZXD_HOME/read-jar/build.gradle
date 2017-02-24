@@ -1,0 +1,5 @@
+dependencies {
+    compile project(':base-plugin')
+    compile "org.xeustechnologies:jcl-core:$jclVersion"
+    compile "org.reflections:reflections:$reflectionsVersion"
+}
