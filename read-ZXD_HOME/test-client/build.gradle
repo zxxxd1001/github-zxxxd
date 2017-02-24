@@ -1,0 +1,43 @@
+apply plugin: 'eu.appsatori.fatjar'
+
+def pluginJar = 'zxd-test-client.jar'
+
+dependencies {
+    compile project(':base-plugin')
+//    compile files('lib/zxd-plugin-client.jar')
+//    compile "com.heren.his:heren-plugin-client:1.0.8-SNAPSHOT"
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'test-plugin-client'
+    }
+}
+
+fatJar {
+    archiveName = pluginJar
+    manifest {
+        attributes 'Implementation-Title': 'test-plugin-client',
+                'Implementation-Version': version,
+                'Implementation-Vendor': 'zxd',
+                'Implementation-Vendor-Id': 'git.zxxxd',
+                'Specification-Title': 'zxxxd',
+                'Specification-Vendor': 'The My Software',
+                'Specification-Version': '1.0',
+                //'Permissions': 'all-permissions',
+                'Codebase': '*',
+                'Application-Name': 'ZXD Test Plugin Client',
+                'Application-Library-Allowable-Codebase': '*',
+                'Caller-Allowable-Codebase': '*',
+                'Trusted-Library': 'true',
+                'Built-On': new Date()
+        // 'Main-Class': 'com.heren.his.client.HerenClient'
+    }
+
+    exclude "about_files/*"
+    exclude "about.html"
+    exclude "plugin.properties"
+    exclude "jetty-dir.css"
+    exclude "META-INF/ECLIPSEF.*"
+
+}
