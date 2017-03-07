@@ -13,6 +13,8 @@ allprojects {
         jclVersion = '2.6'
         reflectionsVersion = '0.9.9-RC1'
         fatjarVersion='0.3'
+        jettyVersion = '9.0.0.M3'
+        guiceVersion = '3.0'
     }
 
     repositories {

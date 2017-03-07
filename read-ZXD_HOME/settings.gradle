@@ -1,2 +1,2 @@
-include 'read-jar','base-plugin','test-client'
+include 'read-jar','base-plugin','test-client','web-start'
 
