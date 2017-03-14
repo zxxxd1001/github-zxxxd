@@ -12,7 +12,7 @@ fatJar {
     archiveName = pluginJar
     manifest {
         attributes 'Implementation-Title': 'plugin-client',
-                'Implementation-Version': version,
+                'Implementation-Version': '1.0',
                 'Implementation-Vendor': 'zxd',
                 'Implementation-Vendor-Id': 'git.zxxxd',
                 'Specification-Title': 'zxxxd',
