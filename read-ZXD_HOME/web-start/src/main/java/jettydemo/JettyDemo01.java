@@ -39,9 +39,8 @@ public class JettyDemo01 {
         ServletContextHandler servletContextHandler=new ServletContextHandler(ServletContextHandler.SESSIONS);
         // 设置上下文路径
         servletContextHandler.setContextPath("/");
-        server.setHandler(servletContextHandler);
         servletContextHandler.addServlet(new ServletHolder(new HelloServlet()),"/hello");
-        System.out.println();
+        server.setHandler(servletContextHandler);
         server.start();
     }
 }
