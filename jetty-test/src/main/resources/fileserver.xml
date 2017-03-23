@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure id="FileServer" class="org.eclipse.jetty.server.Server">
+
+    <Call name="addConnector">
+        <Arg>
+            <New class="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                <Set name="port">8080</Set>
+            </New>
+        </Arg>
+    </Call>
+
+    <Set name="handler">
+        <New class="org.eclipse.jetty.server.handler.HandlerList">
+            <Set name="handlers">
+                <Array type="org.eclipse.jetty.server.Handler">
+                    <Item>
+                        <New class="org.eclipse.jetty.server.handler.ResourceHandler">
+                            <Set name="directoriesListed">true</Set>
+                            <Set name="welcomeFiles">
+                                <Array type="String"><Item>index.html</Item></Array>
+                            </Set>
+                            <Set name="resourceBase">.</Set>
+                        </New>
+                    </Item>
+                    <Item>
+                        <New class="org.eclipse.jetty.server.handler.DefaultHandler">
+                        </New>
+                    </Item>
+                </Array>
+            </Set>
+        </New>
+    </Set>
+</Configure>
+
+
+<!--spring applation 配置信息   关于spring 配置的更多信息 http://wiki.eclipse.org/Jetty/Howto/Spring-->
+<!--<beans>-->
+<!--<bean id="Server" class="org.eclipse.jetty.server.Server" init-method="start" destroy-method="stop">-->
+
+    <!--<property name="connectors">-->
+        <!--<list>-->
+            <!--<bean id="Connector" class="org.eclipse.jetty.server.nio.SelectChannelConnector">-->
+                <!--<property name="port" value="8080"/>-->
+            <!--</bean>-->
+        <!--</list>-->
+    <!--</property>-->
+
+    <!--<property name="handler">-->
+        <!--<bean id="handlers" class="org.eclipse.jetty.server.handler.HandlerList">-->
+            <!--<property name="handlers">-->
+                <!--<list>-->
+                    <!--<bean class="org.eclipse.jetty.server.handler.ResourceHandler">-->
+                        <!--<property name="directoriesListed" value="true"/>-->
+                        <!--<property name="welcomeFiles">-->
+                            <!--<list>-->
+                                <!--<value>index.html</value>-->
+                            <!--</list>-->
+                        <!--</property>-->
+                        <!--<property name="resourceBase" value="."/>-->
+                    <!--</bean>-->
+                    <!--<bean class="org.eclipse.jetty.server.handler.DefaultHandler"/>-->
+                <!--</list>-->
+            <!--</property>-->
+        <!--</bean>-->
+    <!--</property>-->
+<!--</bean>-->
+<!--</beans>-->

@@ -85,7 +85,7 @@ public class MyClientServlet extends HttpServlet {
         out.println("<j2se version=\"1.7+\"/>");
         //指定要下载到本地的jar文件(注意，所有的文件都需要打包才能够下载)，
         //可以包含一些资源文件，如icons/configuration files，可以使用getResource方法取得
-        out.println("<jar href=\"/easySwing.jar\" version=\"1.0.3\"/>");
+        out.println("<jar href=\"/base/easySwing.jar\" version=\"1.0.3\"/>");
         //启动软件只执行一个更新检查以确保JNLP文件是最新的, 根据version判断是否更新
         //设置版本号后jar包名 需从DynamicTreeDemo.jar 改为 DynamicTreeDemo__V1.0.jar .
         //重点在于...__V1.0.jar

@@ -1,0 +1,28 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin:'idea'
+
+sourceCompatibility = 1.5
+
+project.ext {
+    junitVersion = '4.12'
+    jettyVersion = '9.0.0.M3'
+}
+
+repositories {
+    maven{ url nexusPath }
+    // mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:$junitVersion"
+
+    compile "org.eclipse.jetty:jetty-servlet:$jettyVersion"
+    compile "org.eclipse.jetty:jetty-webapp:$jettyVersion"
+    compile "org.eclipse.jetty.websocket:websocket-servlet:$jettyVersion"
+    compile "org.eclipse.jetty.websocket:websocket-server:$jettyVersion"
+
+    compile "org.eclipse.jetty:jetty-client:$jettyVersion"
+    compile "org.eclipse.jetty.websocket:websocket-client:$jettyVersion"
+}

@@ -27,7 +27,7 @@ public class LauncherStart {
             ServletContextHandler servletContextHandler=new ServletContextHandler(ServletContextHandler.SESSIONS);
             servletContextHandler.setContextPath("/");
             servletContextHandler.addServlet(new ServletHolder(new MyClientServlet()),"/my-client");
-            servletContextHandler.setResourceBase("./");
+            servletContextHandler.setResourceBase("web-start/src/main/webapp");
             servletContextHandler.setWelcomeFiles(new String[]{"index.html"});
             server.setHandler(servletContextHandler);
             server.start();
