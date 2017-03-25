@@ -1,0 +1,22 @@
+//生成store
+keytool -genkey -alias tesst -keyalg RSA -keysize 1024 -keystore test.store -validity 365
+//查看store
+keytool -list -v -keystore test.store
+//导出证书
+keytool -alias test -exportcert -keystore test.store -file test.cer
+
+
+//列出keystore内容
+keytool -list -keystore zxxd.keystore -storepass manager -v
+
+//删除keystore条目
+keytool -delete -alias zxxd -keystore zxxd.keystore -storepass zxxd
+
+//生成自签名密钥
+keytool -genkeypair -alias zxxd -validity 36500 -keypass manager -keystore zxxd.keystore -storepass manager -v -dname "cn=zxxd, ou=zxxd, o=zxxd, s=Beijing, c=CN"
+
+//导出证书
+keytool -exportcert -alias zxxd -file zxxd.cer -keystore zxxd.keystore -storepass manager -v
+
+//导入证书
+keytool -importcert -alias zxxd -file zxxd.cer -keypass manager -trustcacerts -keystore cacerts -storepass changeit -v

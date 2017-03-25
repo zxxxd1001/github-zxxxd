@@ -21,4 +21,5 @@
         <servlet-name>myClient</servlet-name>
         <url-pattern>/client</url-pattern>
     </servlet-mapping>
+
 </web-app>
