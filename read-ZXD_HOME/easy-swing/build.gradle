@@ -1,6 +1,6 @@
 apply plugin: 'eu.appsatori.fatjar'
 
-def pluginJar = 'easySwing.jar'
+def pluginJar = 'EasySwing__V1.0.5.jar'
 
 jar {
     manifest {
@@ -25,7 +25,7 @@ fatJar {
                 'Caller-Allowable-Codebase': '*',
                 'Trusted-Library': 'true',
                 'Built-On': new Date(),
-         'Main-Class': 'HelloWorldSwing'
+         'Main-Class': 'hello.start.HelloWorldSwing'
     }
 
     exclude "about_files/*"

@@ -1,4 +1,8 @@
+package hello.start;
+
 import javax.swing.*;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 /**
  * Created by zhangxuedong on 2017/3/14.
@@ -13,7 +17,7 @@ public class HelloWorldSwing {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
         // 创建及设置窗口
-        JFrame frame = new JFrame("HelloWorldSwing");
+        JFrame frame = new JFrame("hello.start.HelloWorldSwing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // 添加 "Hello World" 标签
@@ -25,8 +29,18 @@ public class HelloWorldSwing {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        // 显示应用 GUI
+    public static void main(final String[] args) {
+
+        AccessController.doPrivileged(new PrivilegedAction<Object>() {
+            public Object run() {
+                UnchainedSecurityManager usm = new UnchainedSecurityManager();
+                System.setSecurityManager(usm);
+                return args;
+            }
+        });
+
+
+        /* 显示应用 GUI */
         if(args!=null) {
             for (int i = 0; i < args.length; i++) {
                 System.out.println(args[i]);
