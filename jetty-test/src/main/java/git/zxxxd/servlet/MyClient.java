@@ -15,7 +15,9 @@ public class MyClient extends HelloServlet {
             String ip = request.getServerName();
             int port = request.getServerPort();
             String app = request.getContextPath();
+
             String host = protocol + "://" + ip + ":" + port + app + "/";
+
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Cache-Control", "no-cache");
             response.setHeader("Expires", "0");

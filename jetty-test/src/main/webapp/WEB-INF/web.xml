@@ -22,4 +22,13 @@
         <url-pattern>/client</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>easy</servlet-name>
+        <servlet-class>git.zxxxd.servlet.easyjnpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>easy</servlet-name>
+        <url-pattern>/easy</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -20,3 +20,6 @@ keytool -exportcert -alias zxxd -file zxxd.cer -keystore zxxd.keystore -storepas
 
 //导入证书
 keytool -importcert -alias zxxd -file zxxd.cer -keypass manager -trustcacerts -keystore cacerts -storepass changeit -v
+
+jar包签名
+jarsigner -keystore zxxd.keystore EasySwing__V1.0.5.jar zxxd

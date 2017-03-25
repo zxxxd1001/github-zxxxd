@@ -10,21 +10,22 @@ import org.eclipse.jetty.webapp.WebAppContext;
  */
 public class OneHttpWebApp {
     public static void main(String[] args) {
-        Server server=new Server(8080);
+        Server server=new Server();
         HttpConfiguration https_config = new HttpConfiguration();
-        https_config.setSecureScheme("https");
-        https_config.setSecurePort(8079);
-        https_config.setOutputBufferSize(32768);
-        https_config.addCustomizer(new SecureRequestCustomizer());
+//        https_config.setSecureScheme("https");
+//        https_config.setSecurePort(8080);
+//        https_config.setOutputBufferSize(32768);
+//        https_config.addCustomizer(new SecureRequestCustomizer());
 
         SslContextFactory sslContextFactory=new SslContextFactory();
-        sslContextFactory.setKeyStorePath("src/jnpl/zxxd.keystore");
+        sslContextFactory.setKeyStorePath("src/jnpl/test.store");
         sslContextFactory.setKeyStorePassword("manager");
         sslContextFactory.setKeyManagerPassword("manager");
         ServerConnector serverConnector=
                 new ServerConnector(server,
-                        new SslConnectionFactory(sslContextFactory, "http/1.1"));
-        //serverConnector.setPort(8079);
+                        new SslConnectionFactory(sslContextFactory, "http/1.1"),
+                        new HttpConnectionFactory(https_config));
+        serverConnector.setPort(8080);
 //        serverConnector.setStopTimeout(50000);
 //        serverConnector.setIdleTimeout(500000);
         server.addConnector(serverConnector);
