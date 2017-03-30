@@ -1,0 +1,33 @@
+group 'frame-hibernate'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.5
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' };
+    mavenCentral()
+}
+project.ext {
+    hibernate = '5.2.9.Final'
+    hibernateValidatorVersion = '5.4.1.Final'
+    slf4jVersion = '1.7.2'
+    oracleJDBC = '12.1.0.1'
+}
+
+dependencies {
+    compile "org.hibernate:hibernate-core:$hibernate"
+    compile "org.hibernate:hibernate-entitymanager:$hibernate"
+//    compile "org.slf4j:jul-to-slf4j:$slf4jVersion"
+//    compile "org.slf4j:log4j-over-slf4j:$slf4jVersion"
+    compile group: 'org.hibernate', name: 'hibernate-annotations', version: '3.5.6-Final'
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.1.Final'
+    runtime "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+//    compile "com.oracle:ojdbc14:10.2.0.4.0"
+    compile "com.hynnet:oracle-driver-ojdbc6:$oracleJDBC"
+    //二级缓存实现类
+    compile group: 'org.hibernate', name: 'hibernate-ehcache', version: '5.2.9.Final'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
