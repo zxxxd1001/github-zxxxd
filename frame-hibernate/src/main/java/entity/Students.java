@@ -1,5 +1,6 @@
 package entity;
 
+import javax.persistence.Id;
 import java.util.Date;
 
 /**

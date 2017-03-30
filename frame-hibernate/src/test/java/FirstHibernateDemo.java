@@ -29,17 +29,28 @@ public class FirstHibernateDemo {
     @Before
     public void before() {
         System.out.println("初始化");
+        /**
+         * hibernate 4.3 写法
+         */
         //创建配置对象  读取配置文档hibernate.cfg.xml
-        Configuration configuration = new Configuration().configure();
-        //创建服务注册对象
+//        Configuration configuration = new Configuration().configure();
+//        //创建服务注册对象
 //        ServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-        //创建会话工厂对象
+//        //创建会话工厂对象
 //        sessionFactory=configuration.buildSessionFactory(serviceRegistry);
 
-//        StandardServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().configure().build();
-//        sessionFactory=new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
+/**
+ * hibernate 3.1 写法
+ */
+        //创建配置对象  读取配置文档hibernate.cfg.xml
+//        Configuration configuration = new Configuration().configure();
+//        sessionFactory = configuration.buildSessionFactory();
 
-        sessionFactory = configuration.buildSessionFactory();
+        /**
+         * hibernate 5.2.9 获取configuration
+         */
+        StandardServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().configure().build();
+        sessionFactory=new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
         //会话对象
         session = sessionFactory.openSession();
         //开启事务
