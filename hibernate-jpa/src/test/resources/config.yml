@@ -1,0 +1,15 @@
+database:
+    driver: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.2.199:1521:orcl
+    user: herendh
+    password: herendh
+    properties:
+        hibernate.show_sql: true
+        hibernate.dialect: org.hibernate.dialect.OracleDialect
+        hibernate.hbm2ddl.auto: create
+        hibernate.c3p0.max_size: 5
+        hibernate.c3p0.min_size: 1
+        hibernate.c3p0.timeout: 600
+        hibernate.c3p0.max_statements: 100
+        hibernate.c3p0.acquire_increment: 5
+        hibernate.c3p0.idle_test_period: 60
