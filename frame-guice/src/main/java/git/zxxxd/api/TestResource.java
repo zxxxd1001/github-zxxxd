@@ -19,8 +19,9 @@ public class TestResource {
     @GET
     @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response test(){
-        System.out.println(testFacade.test());
-        return Response.ok().entity(testFacade.test()).build();
+    public Response test() {
+        String test = testFacade.test();
+        System.out.println(test);
+        return Response.ok().entity(test).build();
     }
 }

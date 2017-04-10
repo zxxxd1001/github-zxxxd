@@ -11,7 +11,6 @@ public class TestFacade extends BaseFacade{
 
     public String test(){
         Patient p=entityManager.find(Patient.class,"10010");
-
         return "test";
     }
 
