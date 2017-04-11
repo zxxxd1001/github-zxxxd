@@ -29,7 +29,7 @@ public class LauncherStart {
             }
         });
 
-        Server server = new Server(8092);
+        Server server = new Server(8091);
 
         ServletContextHandler servletHandler = new ServletContextHandler();
         servletHandler.setContextPath("/");
