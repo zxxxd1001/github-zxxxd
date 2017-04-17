@@ -10,6 +10,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sample.soundsystem.CDPlayerConfig;
 import sample.soundsystem.CompactDisc;
+import sample.soundsystem.TestResource;
+
+import javax.annotation.Resource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CDPlayerConfig.class)
@@ -17,10 +20,17 @@ public class CDPlayerTest {
     @Autowired
     private CompactDisc cd;
 
+    @Resource
+    private TestResource testResource;
+
     @Test
     public void play() {
         cd.play();
         System.out.println(cd);
+
+        testResource.testResource();
+        testResource.testClasspath();
+        testResource.testUrl();
 
         /*
          * 在传统 XML 方法中，您可使用 ClassPathXmlApplicationContext 类来加载外部 XML 上下文文件。
@@ -36,5 +46,9 @@ public class CDPlayerTest {
         ApplicationContext ac=new AnnotationConfigApplicationContext(CDPlayerConfig.class);
         Phone phone=ac.getBean("phone",Phone.class);
         System.out.println(phone);
+
+        TestResource tr=ac.getBean("testResource",TestResource.class);
+        TestResource tr2=ac.getBean("testResource",TestResource.class);
+        System.out.println("在TestResource中使用了scope注解定义成了prototype："+(tr2==tr));
     }
 }  
