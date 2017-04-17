@@ -24,7 +24,7 @@ public class AppMoudle {
 
     @Bean
     @Scope(scopeName = "singleton")
-    public Person person(){
+    public Person persons(){
         Person person=new Person();
         person.setName("张三");
         person.setAddress("北京");

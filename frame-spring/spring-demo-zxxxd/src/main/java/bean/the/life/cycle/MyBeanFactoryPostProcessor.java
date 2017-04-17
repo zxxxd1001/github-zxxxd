@@ -15,7 +15,7 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor{
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         System.out.println("BeanFactoryPostProcessor调用postProcessBeanFactory方法");
         //配置依赖 设置值
-        BeanDefinition bd = beanFactory.getBeanDefinition("person");
+        BeanDefinition bd = beanFactory.getBeanDefinition("persons");
         bd.getPropertyValues().addPropertyValue("phone","110");
     }
 }
