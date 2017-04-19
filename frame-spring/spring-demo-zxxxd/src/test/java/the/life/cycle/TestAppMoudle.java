@@ -15,7 +15,7 @@ public class TestAppMoudle {
     @Test
     public void test(){
         AbstractApplicationContext applicationContext=new AnnotationConfigApplicationContext(AppMoudle.class);
-        Person p=applicationContext.getBean("person",Person.class);
+        Person p=applicationContext.getBean("persons",Person.class);
         System.out.println(p);
         applicationContext.close();
     }
