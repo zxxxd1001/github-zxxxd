@@ -13,4 +13,6 @@ dependencies {
     compile "org.springframework:spring-jdbc:$springVersion"
     compile "commons-logging:commons-logging:$loggingVersion"
     compile "org.springframework:spring-test:$springVersion"
+
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
 }
