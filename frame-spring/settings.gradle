@@ -1,1 +1,1 @@
-include 'spring-demo-'+prejectName
+include 'spring-demo-'+prejectName,'jersey-spring'

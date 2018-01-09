@@ -13,6 +13,8 @@ allprojects {
         jxlVersion = "2.6.12"
         springVersion = '4.3.3.RELEASE'
         loggingVersion='1.1.1'
+        jerseyVersion='1.19'
+        jettyVersion='9.4.1.v20170120'
     }
 
     repositories {
