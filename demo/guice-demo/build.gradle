@@ -1,0 +1,18 @@
+group 'git.zxxxd'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven{
+        url 'http://192.168.2.88:8081/nexus/content/groups/public/'
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
