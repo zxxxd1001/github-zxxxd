@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jnlp spec="1.0+" codebase="http://192.168.31.191:8080/" href="easy">
+<jnlp spec="1.0+" codebase="http://192.168.2.193:8080/" href="easy">
     <information>
         <title>Dynamic Tree Demo</title>
         <vendor>Dynamic Team</vendor>
-        <icon href="sometree-icon.jpg"/>
         <offline-allowed/>
     </information>
     <resources>
         <!-- Application Resources -->
         <j2se version="1.6+" href=
                 "http://java.sun.com/products/autodl/j2se"/>
-        <jar href="base/EasySwing__V1.0.5.jar"
+        <jar href="base/heren-webstart__V1.0.4.jar"
              main="true" />
 
     </resources>
     <application-desc
             name="Dynamic Tree Demo Application"
-            main-class="hello.start.HelloWorldSwing"
-            width="300"
-            height="300">
+            main-class="hello.start.HelloWorldSwing">
+        <argument>http://192.168.2.193:8051</argument>
     </application-desc>
     <update check="background"/>
 </jnlp>

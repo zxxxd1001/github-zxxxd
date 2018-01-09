@@ -39,5 +39,6 @@ fatJar {
     exclude "plugin.properties"
     exclude "jetty-dir.css"
     exclude "META-INF/ECLIPSEF.*"
+    exclude "com/git/zxd/*"
 
 }

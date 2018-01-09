@@ -1,6 +1,6 @@
 apply plugin: 'eu.appsatori.fatjar'
 
-def pluginJar = 'EasySwing__V1.0.5.jar'
+def pluginJar = 'EasySwing__V1.0.6.jar'
 
 jar {
     manifest {
@@ -34,4 +34,24 @@ fatJar {
     exclude "jetty-dir.css"
     exclude "META-INF/ECLIPSEF.*"
 
+}
+
+task signJar(dependsOn: ['fatJar']) << {
+    new File('build/signed').mkdirs()
+    ant.signjar(
+            destDir: 'build/signed',
+            jar: 'build/libs/'+pluginJar,
+            keystore: 'src/jnlp/keys/herendh.keystore',
+            storepass: 'herendh',
+            alias: 'herendh',
+            keypass: 'herendh',
+            preservelastmodified: 'true')
+
+}
+
+task releaseJar(dependsOn: ['signJar']) << {
+    copy {
+        from 'build/signed/' + pluginJar
+        into '../../heren-master/heren-main/src/main/webapp/reports'
+    }
 }
