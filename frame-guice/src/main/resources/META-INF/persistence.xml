@@ -8,7 +8,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 
-        <class>git.zxxxd.entity.Patient</class>
+        <!--<class>git.zxxxd.entity.Patient</class>-->
 
 
         <!-- 提供商——Hibernate -->

@@ -29,9 +29,9 @@ public class DBModule extends AbstractModule{
     public Properties toProperties() {
         Properties properties = new Properties();
         properties.put("javax.persistence.jdbc.driver", "oracle.jdbc.driver.OracleDriver");
-        properties.put("javax.persistence.jdbc.url", "jdbc:oracle:thin:@192.168.2.199:1521:orcl");
-        properties.put("javax.persistence.jdbc.user", "herendh");
-        properties.put("javax.persistence.jdbc.password", "herendh");
+        properties.put("javax.persistence.jdbc.url", "jdbc:oracle:thin:@192.168.2.89:1521:orcl");
+        properties.put("javax.persistence.jdbc.user", "hrtest");
+        properties.put("javax.persistence.jdbc.password", "hrtest");
         return properties;
     }
 }

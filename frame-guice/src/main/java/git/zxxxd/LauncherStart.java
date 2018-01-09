@@ -19,6 +19,8 @@ import java.util.EnumSet;
 
 /**
  * Created by zhangxuedong on 2017/4/9.
+ * jersey+guice 示例代码
+ * http://www.programcreek.com/java-api-examples/index.php?api=com.sun.jersey.guice.spi.container.servlet.GuiceContainer
  */
 public class LauncherStart {
     public static void main(String[] args) throws Exception{
@@ -36,6 +38,7 @@ public class LauncherStart {
         servletHandler.addServlet(new ServletHolder(new InvalidRequestServlet()), "/*");
         FilterHolder guiceFilter = new FilterHolder(injector.getInstance(GuiceFilter.class));
         servletHandler.addFilter(guiceFilter, "/*", EnumSet.allOf(DispatcherType.class));
+//        servletHandler.addFilter(GuiceFilter.class, "/*", EnumSet.allOf(DispatcherType.class));
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{servletHandler, new DefaultHandler()});

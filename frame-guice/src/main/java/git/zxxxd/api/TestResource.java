@@ -24,4 +24,10 @@ public class TestResource {
         System.out.println(test);
         return Response.ok().entity(test).build();
     }
+    @GET
+    @Path("hello-word")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response helloWord() {
+        return Response.ok().entity("hello-word").build();
+    }
 }
