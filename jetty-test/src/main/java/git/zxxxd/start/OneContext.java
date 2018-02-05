@@ -5,9 +5,6 @@ import git.zxxxd.servlet.HelloServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
 
-/**
- * Created by zhangxuedong on 2017/3/22.
- */
 public class OneContext {
     public static void main(String[] args) {
         Server server=new Server(8080);
@@ -15,8 +12,8 @@ public class OneContext {
         contextHandler.setContextPath("/hello");
         contextHandler.setResourceBase(".");
         contextHandler.setClassLoader(Thread.currentThread().getContextClassLoader());
-        server.setHandler(contextHandler);
         contextHandler.setHandler(new HelloHandler());
+        server.setHandler(contextHandler);
 
         try {
             server.start();

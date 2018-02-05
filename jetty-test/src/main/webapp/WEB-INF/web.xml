@@ -30,5 +30,4 @@
         <servlet-name>easy</servlet-name>
         <url-pattern>/easy</url-pattern>
     </servlet-mapping>
-
 </web-app>

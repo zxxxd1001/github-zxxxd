@@ -5,9 +5,6 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
-/**
- * Created by zhangxuedong on 2017/3/22.
- */
 public class OneServletContext {
     public static void main(String[] args) {
         Server server=new Server(8080);
