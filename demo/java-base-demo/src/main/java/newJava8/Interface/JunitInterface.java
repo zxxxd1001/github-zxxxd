@@ -1,4 +1,4 @@
-package test.testJava8Interface;
+package newJava8.Interface;
 
 public class JunitInterface {
     public static void main(String[] args) {
@@ -6,7 +6,11 @@ public class JunitInterface {
         TestInterface t=new TestInterfaceImpl();
         t.testDefault();
 
-        TestInterface tt=new TestInterfaceImplTow();
+        TestInterfaceImplTow tt=new TestInterfaceImplTow();
         tt.testDefault();
+        tt.testStatic();
+        System.out.println(tt.I);
+
+        TestMultipleInterface.testStatic();
     }
 }

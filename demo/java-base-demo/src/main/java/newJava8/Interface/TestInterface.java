@@ -1,4 +1,4 @@
-package test.testJava8Interface;
+package newJava8.Interface;
 
 public interface TestInterface {
 

@@ -1,4 +1,4 @@
-package test.testJava8Interface;
+package newJava8.Interface;
 
 /**
  * Created by zhangxuedong on 2017/4/11.

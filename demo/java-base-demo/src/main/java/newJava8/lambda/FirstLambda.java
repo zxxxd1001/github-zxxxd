@@ -1,4 +1,4 @@
-package test.testJava8Lambda;
+package newJava8.lambda;
 
 import java.util.*;
 import java.util.stream.Collectors;
