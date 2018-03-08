@@ -6,7 +6,7 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'maven'
 
-    sourceCompatibility = 1.5
+    sourceCompatibility = 1.8
 
     project.ext {
         junitVersion = '4.12'
