@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+    <context:component-scan base-package="git.zxxxd.spring.aop"/>
+    <!--xml配置aop-->
+    <!--aop:advisor aop:aspect 最终的实现逻辑是一样的-->
+    <aop:config>
+        <aop:pointcut id="target" expression="within(git.zxxxd.spring.aop.dao..*)"/>
+        <!--aop:aspect 大多用在日志和缓存-->
+        <aop:aspect ref="loggerOutAop">
+            <aop:before method="logger" pointcut-ref="target"/>
+            <aop:after method="logger" pointcut="execution(* git.zxxxd.spring.aop.dao..*(..))"/>
+        </aop:aspect>
+    </aop:config>
+    <aop:config>
+        <!--aop:advisor通知 大多用在事务-->
+        <aop:advisor advice-ref="advisorAop" pointcut-ref="target"/>
+    </aop:config>
+
+    <!--开启aop注解，通过注解配置aop-->
+    <aop:aspectj-autoproxy/>
+
+</beans>

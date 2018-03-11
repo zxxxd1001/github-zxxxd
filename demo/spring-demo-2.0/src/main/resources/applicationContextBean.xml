@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 采用new GregorianCalendar(),构造方法 -->
+    <bean id="c1" class="java.util.GregorianCalendar"></bean>
+    <!-- 采用Calendar.getInstance(),静态工厂方法 -->
+    <bean id="c2" class="java.util.Calendar" factory-method="getInstance"></bean>
+    <!-- 采用c2.getTime(),对象工厂方法 -->
+    <bean id="date" factory-bean="c2" factory-method="getTime"></bean>
+
+
+    <bean id="beanLifecycle" scope="singleton" lazy-init="true"
+          init-method="init" destroy-method="beanDestroy" class="git.zxxxd.spring.bean.BeanLifecycle">
+    </bean>
+
+
+    <!--set和constructor注入
+            注入各种类型数据 开发不会用到 了解一下就ok-->
+    <bean id="constructor" class="git.zxxxd.spring.bean.Person">
+        <constructor-arg index="0" value="张"></constructor-arg>
+        <constructor-arg index="1" ref="date"></constructor-arg>
+    </bean>
+
+    <bean id="message" class="git.zxxxd.spring.bean.MessageBean">
+        <!--通过set方法注入-->
+        <property name="name" value="张三"></property>
+        <property name="age" value="24"></property>
+        <property name="birth" value="2016-12-30"></property>
+        <property name="date" ref="date"></property>
+        <!--注入list-->
+        <property name="friends">
+            <list>
+                <value>tom</value>
+                <value>jack</value>
+            </list>
+        </property>
+        <!--注入set-->
+        <property name="cities">
+            <set>
+                <value>北京</value>
+                <value>上海</value>
+            </set>
+        </property>
+        <!--注入map-->
+        <property name="books">
+            <map>
+                <entry key="2015" value="呼吸内科"></entry>
+                <entry key="221002" value="康复病区"></entry>
+            </map>
+        </property>
+        <!--注入Properties-->
+        <property name="db">
+            <props>
+                <prop key="username">root</prop>
+                <prop key="password">manager</prop>
+                <prop key="driver">com.sql.jdbc.Driver</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--读取外部配置文件property-->
+    <util:properties id="dbParam" location="classpath:jdbc.properties"></util:properties>
+
+    <bean id="messageTwo" class="git.zxxxd.spring.bean.MessageBean">
+        <property name="name" value="#{dbParam['123']}"></property>
+        <property name="friends" ref="list"></property>
+        <property name="cities" ref="set"></property>
+        <property name="books" ref="map"></property>
+        <property name="db" ref="db"></property>
+    </bean>
+
+    <util:properties id="db">
+        <prop key="username">#{dbParam.username}</prop>
+        <prop key="password">#{dbParam.password}</prop>
+        <prop key="driver">#{dbParam.driver}</prop>
+    </util:properties>
+
+    <util:list id="list">
+        <value>tom</value>
+        <value>jack</value>
+    </util:list>
+
+    <util:set id="set">
+        <value>北京</value>
+        <value>上海</value>
+    </util:set>
+
+    <util:map id="map">
+        <entry key="2015" value="呼吸内科"></entry>
+        <entry key="221002" value="康复病区"></entry>
+    </util:map>
+
+</beans>
