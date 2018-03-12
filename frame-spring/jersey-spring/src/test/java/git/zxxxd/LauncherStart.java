@@ -14,11 +14,13 @@ public class LauncherStart {
     public static void main(String[] args) throws Exception{
 
         ServletContainer jersey=new ServletContainer(MyRestWebService.class);
+        ServletHolder sh=new ServletHolder(jersey);
+        sh.getRegistration().setLoadOnStartup(1);
 
         ServletContextHandler context = new ServletContextHandler();
         context.setContextPath("/");
-        context.addServlet(new ServletHolder(jersey),"/api/*");
-//        context.addEventListener(new ContextLoaderListener());
+        context.addServlet(sh,"/api/*");
+        context.addEventListener(new ContextLoaderListener());
 //        context.addEventListener(new RequestContextListener());
 //        context.setInitParameter("contextClass", AnnotationConfigWebApplicationContext.class.getName());
 //        context.setInitParameter("contextConfigLocation", SpringAppModule.class.getName());
