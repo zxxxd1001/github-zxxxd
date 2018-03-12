@@ -14,7 +14,7 @@ public class TestAnnotation {
     public void test(){
         AbstractApplicationContext ac=new ClassPathXmlApplicationContext("applicationContextAnnotationBean.xml");
         Person p=ac.getBean("person",Person.class);
-        System.out.println(p.getName());
+        System.out.println(p.getName()+","+p.getWang());
         p.getBeanInterFace().whatYouName();
         System.out.println("");
         for(BeanInterFace b:p.getBeanInterFaces()){

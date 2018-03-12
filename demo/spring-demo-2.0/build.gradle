@@ -17,6 +17,13 @@ repositories {
     mavenCentral()
     maven{ url 'http://192.168.0.105:8081/nexus/content/groups/public/' }
 }
+sourceSets {
+    main {
+        resources {
+            srcDirs += 'src/main/webapp'
+        }
+    }
+}
 
 dependencies {
     testCompile "junit:junit:$junitVersion"

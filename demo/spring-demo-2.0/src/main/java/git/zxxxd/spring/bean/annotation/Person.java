@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
 /**
@@ -15,6 +17,10 @@ import java.util.List;
 public class Person {
 
     private String name;
+
+    @Inject
+    @Named("wang")
+    private String wang;
 
     @Resource(name="beanImplOne")
     private BeanInterFace beanInterFace;
@@ -50,5 +56,13 @@ public class Person {
 
     public void setBeanInterFaces(List<BeanInterFace> beanInterFaces) {
         this.beanInterFaces = beanInterFaces;
+    }
+
+    public String getWang() {
+        return wang;
+    }
+
+    public void setWang(String wang) {
+        this.wang = wang;
     }
 }
