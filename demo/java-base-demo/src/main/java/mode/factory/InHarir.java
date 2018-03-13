@@ -1,4 +1,4 @@
-package dsign.mode.factory;
+package mode.factory;
 
 /**
  * Created by zhangxd on 2016/5/30.

@@ -1,4 +1,4 @@
-package dsign.mode.singleton;
+package mode.singleton;
 
 /**
  * 懒汉与饿汉区别

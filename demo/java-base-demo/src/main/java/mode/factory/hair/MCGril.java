@@ -1,4 +1,4 @@
-package dsign.mode.factory.hair;
+package mode.factory.hair;
 
 /**
  * 圣诞系类的女孩

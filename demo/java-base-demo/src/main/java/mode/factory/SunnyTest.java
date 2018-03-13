@@ -1,8 +1,8 @@
-package dsign.mode.factory;
+package mode.factory;
 
-import dsign.mode.factory.hair.Boy;
-import dsign.mode.factory.hair.MCFactory;
-import dsign.mode.factory.hair.PersonFactory;
+import mode.factory.hair.Boy;
+import mode.factory.hair.MCFactory;
+import mode.factory.hair.PersonFactory;
 
 /**
  * 模拟客户端实现

@@ -1,7 +1,7 @@
-package dsign.mode.proxy.to;
+package mode.proxy.to;
 
-import dsign.mode.proxy.Car;
-import dsign.mode.proxy.Moveable;
+import mode.proxy.Car;
+import mode.proxy.Moveable;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;

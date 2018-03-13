@@ -1,4 +1,4 @@
-package dsign.mode.singleton;
+package mode.singleton;
 
 public class Test {
     public static void main(String[] args) {

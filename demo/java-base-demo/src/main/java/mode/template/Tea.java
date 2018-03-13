@@ -1,4 +1,4 @@
-package dsign.mode.template;
+package mode.template;
 
 /**
  * Created by zhangxd on 2016/6/1.

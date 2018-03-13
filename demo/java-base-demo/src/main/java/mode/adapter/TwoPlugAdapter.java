@@ -1,4 +1,4 @@
-package dsign.mode.adapter;
+package mode.adapter;
 
 /**
  * 二相转三相插座

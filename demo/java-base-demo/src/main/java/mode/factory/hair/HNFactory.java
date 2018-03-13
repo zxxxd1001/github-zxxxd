@@ -1,4 +1,4 @@
-package dsign.mode.factory.hair;
+package mode.factory.hair;
 
 /**
  * Created by zhangxd on 2016/5/30.

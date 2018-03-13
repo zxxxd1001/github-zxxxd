@@ -1,4 +1,4 @@
-package dsign.mode.adapter;
+package mode.adapter;
 
 /**
  * 采用继承方式的插座适配器

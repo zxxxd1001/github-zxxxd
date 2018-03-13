@@ -1,4 +1,4 @@
-package dsign.mode.singleton;
+package mode.singleton;
 
 /**
  * 单利模式Singleton

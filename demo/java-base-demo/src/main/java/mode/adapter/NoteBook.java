@@ -1,4 +1,4 @@
-package dsign.mode.adapter;
+package mode.adapter;
 
 /**
  * Created by zhangxd on 2016/5/30.

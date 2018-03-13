@@ -1,4 +1,4 @@
-package dsign.mode.template;
+package mode.template;
 
 /**
  *

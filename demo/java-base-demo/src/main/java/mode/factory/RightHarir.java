@@ -1,4 +1,4 @@
-package dsign.mode.factory;
+package mode.factory;
 
 /**
  * 右偏分发型

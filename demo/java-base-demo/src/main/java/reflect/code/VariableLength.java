@@ -1,6 +1,6 @@
 package reflect.code;
 
-import dsign.mode.proxy.to.TimeHandler;
+import mode.proxy.to.TimeHandler;
 
 /**
  * Created by zhangxd on 2016/6/20.

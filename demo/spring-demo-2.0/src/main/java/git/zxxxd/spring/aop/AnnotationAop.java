@@ -16,6 +16,9 @@ public class AnnotationAop {
     @Pointcut("execution(* git.zxxxd.spring.aop.dao..*(..))")
     private void anyMethod(){}
 
+    @Pointcut("@annotation(git.zxxxd.spring.aop.annotation.AopAnntation)")
+    private void anyAnntation(){}
+
     @Before("anyMethod()")
     public void doBefore(){
         System.out.println("前置通知");
@@ -42,5 +45,10 @@ public class AnnotationAop {
         Object object = pjp.proceed();//执行该方法
         System.out.println("退出方法");
         return object;
+    }
+
+    @Before("anyAnntation()")
+    public void doAnntation(){
+        System.out.println("aop注解拦截");
     }
 }

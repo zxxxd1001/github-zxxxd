@@ -4,6 +4,7 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:beans="http://www.springframework.org/schema/beans"
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -17,4 +18,12 @@
     <!-- 配置hanldermapping -->
     <mvc:annotation-driven/>
     <context:component-scan base-package="git.zxxxd.spring.mvc"/>
+    <mvc:interceptors>
+        <!--对所有的请求进行拦截-->
+        <!--<beans:bean class="git.zxxxd.spring.mvc.MyInterceptor"/>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/hello"/>
+            <bean class="git.zxxxd.spring.mvc.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

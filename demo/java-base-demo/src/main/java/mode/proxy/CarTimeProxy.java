@@ -1,4 +1,4 @@
-package dsign.mode.proxy;
+package mode.proxy;
 
 /**
  * Created by zhangxd on 2016/6/12.

@@ -1,4 +1,4 @@
-package dsign.mode.proxy.to;
+package mode.proxy.to;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
