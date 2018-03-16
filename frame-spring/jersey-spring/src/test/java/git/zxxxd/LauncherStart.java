@@ -1,7 +1,12 @@
 package git.zxxxd;
 
 
+import com.sun.jersey.server.impl.application.DeferredResourceConfig;
+import com.sun.jersey.server.impl.application.WebApplicationContext;
 import com.sun.jersey.spi.container.servlet.ServletContainer;
+import com.sun.jersey.spi.container.servlet.WebConfig;
+import com.sun.jersey.spi.container.servlet.WebServletConfig;
+import com.sun.jersey.spi.spring.container.servlet.SpringServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;

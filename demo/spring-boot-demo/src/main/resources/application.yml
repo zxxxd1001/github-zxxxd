@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.0.123:1521:orcl
+    username: herendh
+    password: herendh
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+server:
+  port: 8002
+  servlet:
+    context-path: /api
+
+age: 16
+person:
+  name: 张三
+  age: 8

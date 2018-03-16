@@ -8,18 +8,28 @@ sourceCompatibility = 1.8
 
 project.ext {
     junitVersion = '4.12'
-    poiVersion='3.15-beta1'
-    jxlVersion="2.6.12"
+    springVersion='4.3.3.RELEASE'
 }
 
 repositories {
-    maven{ url nexusPath }
+    maven{ url 'http://192.168.101.25:8081/nexus/content/groups/public/' }
     // mavenCentral()
 }
 
 dependencies {
     testCompile "junit:junit:$junitVersion"
-    compile "org.apache.poi:poi:$poiVersion"
-    compile "org.apache.poi:poi-ooxml:$poiVersion"
-    compile "net.sourceforge.jexcelapi:jxl:$jxlVersion"
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-aop:$springVersion"
+    compile "org.springframework:spring-core:$springVersion"
+    compile "org.springframework:spring-beans:$springVersion"
+    compile "org.springframework:spring-tx:$springVersion"
+    compile "org.springframework:spring-web:$springVersion"
+    compile "org.springframework:spring-webmvc:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+//    compile "commons-logging:commons-logging:$loggingVersion"
+    compile "org.springframework:spring-test:$springVersion"
+
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
+    compile group: 'org.aspectj', name: 'aspectjrt', version: '1.8.2'
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.2'
 }

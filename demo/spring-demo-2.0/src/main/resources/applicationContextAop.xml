@@ -18,14 +18,14 @@
     <!--aop:advisor aop:aspect 最终的实现逻辑是一样的-->
     <aop:config>
         <aop:pointcut id="target" expression="within(git.zxxxd.spring.aop.dao..*)"/>
-        <!--aop:aspect 大多用在日志和缓存-->
+        <!--aop:aspect 定义切点 包括了通知和切入点 大多用在日志和缓存-->
         <aop:aspect ref="loggerOutAop">
             <aop:before method="logger" pointcut-ref="target"/>
             <aop:after method="logger" pointcut="execution(* git.zxxxd.spring.aop.dao..*(..))"/>
         </aop:aspect>
     </aop:config>
     <aop:config>
-        <!--aop:advisor通知 大多用在事务-->
+        <!--aop:advisor定义通知器 大多用在事务-->
         <aop:advisor advice-ref="advisorAop" pointcut-ref="target"/>
     </aop:config>
 

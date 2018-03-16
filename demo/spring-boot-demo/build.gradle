@@ -1,0 +1,62 @@
+group 'git.zxxxd'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        maven{ url 'http://192.168.0.124:8081/nexus/content/groups/public/' }
+        jcenter()
+    }
+    dependencies {
+        classpath "eu.appsatori:gradle-fatjar-plugin:0.3"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'eu.appsatori.fatjar'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+
+project.ext {
+    junitVersion = '4.12'
+    springBootVersion = '2.0.0.RELEASE'
+}
+repositories {
+    mavenCentral()
+    maven{ url 'http://192.168.0.124:8081/nexus/content/groups/public/' }
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    compile "com.oracle:ojdbc6:11.2.0.1.0"
+    testCompile "junit:junit:$junitVersion"
+}
+
+jar{
+    manifest {
+        attributes 'Implementation-Vendor': 'github/my',
+                'Implementation-Vendor-Id': 'my',
+                'Main-Class': 'com.git.zxxxd.SpringBootMain',
+                'Built-On': new Date()
+    }
+}
+
+fatJar {
+    manifest {
+        attributes 'Implementation-Vendor': 'github/my',
+                'Implementation-Vendor-Id': 'my',
+                'Main-Class': 'com.git.zxxxd.SpringBootMain',
+                'Built-On': new Date()
+    }
+
+    exclude "about_files/*"
+    exclude "about.html"
+    exclude "plugin.properties"
+    exclude "jetty-dir.css"
+    exclude "META-INF/ECLIPSEF.*"
+
+}
