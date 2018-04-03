@@ -1,4 +1,4 @@
-package test.nio;
+package test.io;
 
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -17,7 +17,7 @@ public class TestChannel {
              * SocketChannel：能通过TCP读写网络中的数据。
              * ServerSocketChannel：可以监听新进来的TCP连接，像Web服务器那样。对每一个新进来的连接都会创建一个SocketChannel。
              */
-            RandomAccessFile randomAccessFile=new RandomAccessFile("src/main/java/test.nio/test.txt","rw");
+            RandomAccessFile randomAccessFile=new RandomAccessFile("src/main/java/test.io/test.txt","rw");
             //读取到文件
             FileChannel f=randomAccessFile.getChannel();
             ByteBuffer b=ByteBuffer.allocate(48);

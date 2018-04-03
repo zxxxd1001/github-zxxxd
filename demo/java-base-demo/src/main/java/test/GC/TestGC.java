@@ -1,7 +1,7 @@
 package test.GC;
 
 /**
- * Created by zhangxuedong on 2017/9/5.
+ * System.gc()、Runtime.getRuntime().gc() 手动调用gc
  */
 public class TestGC {
     private static TestGC c =null;
