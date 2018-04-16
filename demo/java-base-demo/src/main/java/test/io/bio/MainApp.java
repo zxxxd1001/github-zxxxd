@@ -38,5 +38,22 @@ public class MainApp {
                 }
             }
         }).start();
+        new Thread(new Runnable() {
+            @SuppressWarnings("static-access")
+            @Override
+            public void run() {
+                while(true){
+                    //随机产生算术表达式
+                    String expression = random.nextInt(10)+""+operators[random.nextInt(4)]+(random.nextInt(10)+1);
+                    Client.send(expression);
+                    try {
+                        Thread.currentThread().sleep(random.nextInt(1000));
+                        System.out.println(Thread.currentThread().getName());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 }

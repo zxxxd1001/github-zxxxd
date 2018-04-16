@@ -10,11 +10,12 @@ project.ext {
     junitVersion = '4.12'
     poiVersion='3.15-beta1'
     jxlVersion="2.6.12"
+    nettyVersion='5.0.0.Alpha1'
 }
 
 repositories {
+    mavenCentral()
     maven{ url nexusPath }
-    // mavenCentral()
 }
 
 dependencies {
@@ -22,4 +23,5 @@ dependencies {
     compile "org.apache.poi:poi:$poiVersion"
     compile "org.apache.poi:poi-ooxml:$poiVersion"
     compile "net.sourceforge.jexcelapi:jxl:$jxlVersion"
+    compile "io.netty:netty-all:$nettyVersion"
 }
