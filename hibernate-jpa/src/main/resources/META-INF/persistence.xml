@@ -7,6 +7,7 @@
     <persistence-unit name="jpaUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>my.jpa.entity.Person</class>
+        <class>my.jpa.entity.InpAppoint</class>
 
        <!--<properties>-->
            <!--<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>-->

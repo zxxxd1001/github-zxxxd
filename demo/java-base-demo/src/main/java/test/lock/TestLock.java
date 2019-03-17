@@ -13,11 +13,11 @@ public class TestLock {
         TestLock t=new TestLock();
         Thread tt= new Thread(new Runnable() {
             public void run() {
-//                t.test.lock();
+//                t.testLock();
 //                t.testTryLock();
                 try {
-//                    t.insert();
-                    t.testLockInterruptibly();
+                    t.insert();
+//                    t.testLockInterruptibly();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -25,11 +25,11 @@ public class TestLock {
         });
         Thread ttt= new Thread(new Runnable() {
             public void run() {
-//                t.test.lock();
+//                t.testLock();
 //                t.testTryLock();
                 try {
-//                    t.insert();
-                    t.testLockInterruptibly();
+                    t.insert();
+//                    t.testLockInterruptibly();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -71,21 +71,24 @@ public class TestLock {
             System.out.println(Thread.currentThread().getName()+":没有得到锁");
         }
     }
-    private void insert() throws Exception{
-        //tryLock 如果拿不到锁阻塞4秒后在尝试
-        System.out.println("tryLock之前out");
-        if (lock.tryLock(4, TimeUnit.SECONDS)) {
-            try {
-                System.out.println(Thread.currentThread().getName() + ":得到锁");
-//                Thread.sleep(5000);
-                Thread.sleep(2000);
-            } catch (Exception e) {
-            } finally {
-                lock.unlock();
-                System.out.println(Thread.currentThread().getName()+":释放锁");
+    private void insert(){
+        try {
+            //tryLock 如果拿不到锁阻塞4秒后在尝试
+            System.out.println("tryLock之前out");
+            if (lock.tryLock(4, TimeUnit.SECONDS)) {
+                try {
+                    System.out.println(Thread.currentThread().getName() + ":得到锁");
+                    Thread.sleep(5000);
+//                    Thread.sleep(2000);
+                } finally {
+                    lock.unlock();
+                    System.out.println(Thread.currentThread().getName()+":释放锁");
+                }
+            }else{
+                System.out.println(Thread.currentThread().getName()+":没有得到锁");
             }
-        }else{
-            System.out.println(Thread.currentThread().getName()+":没有得到锁");
+        } catch (InterruptedException e) {
+            System.out.println("没有获取到锁4秒后在此获取");
         }
     }
     private void testLockInterruptibly() throws Exception{

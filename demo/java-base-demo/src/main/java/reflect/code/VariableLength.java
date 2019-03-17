@@ -11,7 +11,7 @@ public class VariableLength {
     }
     public static void main(String[] args) throws ClassNotFoundException {
 
-        Class c=Class.forName("dsign.mode.proxy.to.TimeHandler");
+        Class c=Class.forName("mode.proxy.to.TimeHandler");
         Class cc=TimeHandler.class;
 
         System.out.println(cc==c);

@@ -1,0 +1,19 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin:'idea'
+
+sourceCompatibility = 1.8
+
+project.ext {
+    junitVersion = '4.12'
+}
+
+repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+    testCompile "junit:junit:$junitVersion"
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.1'
+}

@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 public class TestBean {
     @Test
     public void test(){
+//        AbstractApplicationContext ac= new ClassPathXmlApplicationContext("classpath*:applicationContextBean.xml");
         AbstractApplicationContext ac= new ClassPathXmlApplicationContext("applicationContextBean.xml");
         GregorianCalendar c=ac.getBean("c1",GregorianCalendar.class);
         System.out.println(c);
