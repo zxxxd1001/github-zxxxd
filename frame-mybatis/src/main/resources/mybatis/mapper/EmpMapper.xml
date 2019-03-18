@@ -1,20 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="empsql">
-    <select id="findAll" resultType="com.git.zxxxd.entity.Emp">
+    <sql id="emp_column">
+        id,name
+    </sql>
+    <!--传入的是基础类型 在作if时要用 _parameter 参数判断-->
+    <select id="findAllOrById" parameterType="int" resultType="com.git.zxxxd.entity.Emp">
         select * from emp
+        <where>
+            <if test="_parameter!=null">
+               and id=#{id}
+            </if>
+        </where>
     </select>
-    <select id="findById" parameterType="int" resultType="com.git.zxxxd.entity.Emp">
-        select * from emp where id=#{id}
-    </select>
-    <insert id="insert" parameterType="com.git.zxxxd.entity.Emp">
-        insert into emp VALUES (#{id},#{name},#{salary},#{age})
-    </insert>
 
+    <select id="findMap" resultType="map">
+        select <include refid="emp_column"/>,salary from emp
+    </select>
+    <select id="findAs" resultType="com.git.zxxxd.entity.EmpOne">
+        select id,name userName from emp
+    </select>
+
+    <select id="findResultMap" resultMap="empResultMap">
+        select  <include refid="emp_column"/> from emp
+    </select>
+    <select id="findResultMap1" resultMap="empOneMap">
+        select  <include refid="emp_column"/>,age from emp
+    </select>
+    
     <delete id="delete" parameterType="int">
         delete from emp where id=#{id}
+    </delete>
+    <delete id="deleteIn" parameterType="list">
+        delete from emp
+        <where>
+            <if test="list!=null">
+                id in
+                <foreach collection="list" item="i" index="index" separator="," open="(" close=")">
+                    #{i}
+                </foreach>
+            </if>
+        </where>
     </delete>
     <update id="update" parameterType="com.git.zxxxd.entity.Emp">
         update emp set age=#{age} where id=#{id}
     </update>
+    <!--set 自动处理最后的 ,符号-->
+    <update id="updateSet" parameterType="com.git.zxxxd.entity.Emp">
+        update emp
+        <set>
+            <if test="age!=null and age!=''">
+                age=#{age},
+            </if>
+            <if test="name!=null and age!=''">
+                name=#{name},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <insert id="insert" parameterType="com.git.zxxxd.entity.Emp">
+        insert into emp VALUES (#{id},#{name},#{salary},#{age})
+    </insert>
+
+    <insert id="insertTrim" parameterType="com.git.zxxxd.entity.Emp">
+        insert into emp
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id!=null">id,</if>
+            <if test="name!=null">name,</if>
+            <if test="salary!=null">salary,</if>
+            <if test="age!=null">age,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="id!=null">#{id},</if>
+            <if test="name!=null">#{name},</if>
+            <if test="salary!=null">#{salary},</if>
+            <if test="age!=null">#{age},</if>
+        </trim>
+    </insert>
+
+
+    <resultMap id="empResultMap" type="com.git.zxxxd.entity.EmpOne">
+        <id column="id" property="id"/>
+        <result column="name" property="userName"/>
+    </resultMap>
+
+    <resultMap id="empOneMap" type="com.git.zxxxd.entity.EmpOne" extends="empResultMap">
+        <result column="age" property="userAge"/>
+    </resultMap>
+    
 </mapper>

@@ -11,7 +11,7 @@
             <!--数据库链接池，由-->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://192.168.0.105:3306/mybatis?characterEncoding=utf8"/>
+                <property name="url" value="jdbc:mysql://10.3.37.56:3306/mybatis?characterEncoding=utf8"/>
                 <property name="username" value="root"/>
                 <property name="password" value="manager"/>
             </dataSource>
@@ -20,5 +20,7 @@
 
     <mappers>
         <mapper resource="mybatis/mapper/EmpMapper.xml"/>
+        <mapper resource="mybatis/mapper/UserMapper.xml"/>
+        <mapper resource="mybatis/mapper/NoteBookMapper.xml"/>
     </mappers>
 </configuration>
