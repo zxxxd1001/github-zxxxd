@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.zxxxd.dao.PatientMapper">
+    <select id="selectAll" resultType="com.git.zxxxd.entity.Patient">
+        select patient_id patientId,name from pat_master_index where patient_id='zxd123'
+    </select>
+
+    <insert id="insert"  parameterType="com.git.zxxxd.entity.Patient">
+        insert into pat_master_index(patient_id,name) values (#{patientId},#{name})
+    </insert>
+    <insert id="delete"  parameterType="string">
+        delete from pat_master_index where patient_id=#{id}
+    </insert>
+</mapper>

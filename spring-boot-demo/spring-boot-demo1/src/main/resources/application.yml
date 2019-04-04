@@ -1,0 +1,41 @@
+server:
+  port: 8081
+#debug: true #来让控制台打印自动配置报告,这样我们就可以很方便的知道哪些自动配置类生效；
+spring:
+  profiles:
+    active: dev
+
+person:
+  lastName: hello
+  age: 18
+  boos: false
+  birth: 2018/12/12
+  #行内写法 { k1: v1, k2: 12 }
+  maps:
+    k1: v1
+    k2: 12
+  lists:
+  #用- 值表示数组中的一个元素 行内写法[list,zhaoliu]
+  - lisi
+  - zhaoliu
+  dog:
+    name: ${person.lastName:默认值}小狗
+    age: 12
+
+logging:
+  level.com.git: trace
+#path和file是两个冲突配置只有一个生效
+  path: /Users/zhangxuedong/work/log  # 不自定文件，默认使用 spring.log 文件
+#  file: springboot.log #不指定路径在当前项目下生成springboot.log日志
+
+#  pattern:
+#    console: %d{yyyy-MM-dd} [%thread] %-5level %logger{50} - %msg%n # 在控制台输出的日志的格式
+#    file: %d{yyyy-MM-dd} === [%thread] === %-5level === %logger{50} ==== %msg%n # 指定文件中日志输出的格式
+
+#日志输出格式：
+#  %d表示日期时间，
+#  %thread表示线程名，
+#  %-5level：级别从左显示5个字符宽度
+#  %logger{50} 表示logger名字最长50个字符，否则按照句点分割。
+#  %msg：日志消息，
+#  %n是换行符

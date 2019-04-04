@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.git.zxxxd.dao.UserMapper">
+    <select id="selectAll" resultMap="userMap">
+        select * from cn_user cu left join cn_notebook cn on cu.cn_user_id=cn.cn_user_id
+    </select>
+
+    <!--<collection property="Java属性名" ofType="另一Java类名" javaType="ArrayList"
+    column="关联主键ID(用于嵌套查询SQL语句传入参数，多个用逗号分开)" select="另一个select映射SQL的ID"/>-->
+    <resultMap id="userMap" type="com.git.zxxxd.entity.User">
+        <id column="cn_user_id" property="cn_user_id"></id>
+        <result column="cn_user_name" property="cn_user_name"></result>
+        <result column="cn_user_password" property="cn_user_password"></result>
+        <result column="cn_user_token" property="cn_user_token"></result>
+        <result column="cn_user_desc" property="cn_user_desc"></result>
+        <collection property="books" javaType="list" ofType="com.git.zxxxd.entity.NoteBook">
+            <id column="cn_notebook_id" property="cn_notebook_id"></id>
+            <result column="cn_user_id" property="cn_user_id"></result>
+            <result column="cn_notebook_type_id" property="cn_notebook_type_id"></result>
+            <result column="cn_notebook_name" property="cn_notebook_name"></result>
+            <result column="cn_notebook_desc" property="cn_notebook_desc"></result>
+            <result column="cn_notebook_createtime" property="cn_notebook_createtime"></result>
+        </collection>
+    </resultMap>
+
+    <select id="selectAll1" resultMap="user">
+        select * from cn_user
+    </select>
+
+    <resultMap id="user" type="com.git.zxxxd.entity.User">
+        <id column="cn_user_id" property="cn_user_id"></id>
+        <result column="cn_user_name" property="cn_user_name"></result>
+        <result column="cn_user_password" property="cn_user_password"></result>
+        <result column="cn_user_token" property="cn_user_token"></result>
+        <result column="cn_user_desc" property="cn_user_desc"></result>
+        <collection property="books" javaType="list" ofType="com.git.zxxxd.entity.NoteBook"
+                    column="{cn_user_id=cn_user_id}" select="notebook"></collection>
+    </resultMap>
+    <select id="notebook" resultType="com.git.zxxxd.entity.NoteBook" parameterType="map">
+        select * from cn_notebook
+        <where>
+            <if test="cn_user_id!=null">
+                cn_user_id=#{cn_user_id}
+            </if>
+        </where>
+    </select>
+    <select id="select" resultType="com.git.zxxxd.entity.User" parameterType="string">
+        select * from cn_user where cn_user_id=#{id} and cn_user_name=#{name}
+    </select>
+    <select id="selectTwo" resultType="com.git.zxxxd.entity.User" parameterType="map">
+        select * from cn_user where cn_user_id=#{id} and cn_user_name=#{name}
+    </select>
+</mapper>

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class testEmp {
+public class TestEmp {
     public static void main(String[] args) {
         SqlSession sqlSession=MyBatisUtils.getSession();
         Emp emp=new Emp(14,"张三",100.00,25);

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="js/jquery.js"></script>
+<script>
+    $.ajax("/emp/post",{
+        dataType:"json",
+        contentType:"application/json",
+        type:"post",
+        data:JSON.stringify({lastName:"lastName",email:"email",gender:2,dId:123}),
+        success:function (rs) {
+            console.log(rs);
+        }
+    });
+</script>
+</body>
+</html>

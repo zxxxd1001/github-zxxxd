@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-3.2.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+    <bean id="dbcpDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="username" value="herendh"/>
+        <property name="password" value="herendh"/>
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@10.3.37.202:1521:orcl"/>
+    </bean>
+    <!--mybatis文件配置，扫描所有的mapper-->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dbcpDataSource"/>
+        <property name="mapperLocations" value="classpath*:mybatis/mapper/*.xml"/>
+    </bean>
+    <!--spring整合mybatis配置，扫描所有Dao-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.git.zxxxd.dao"/>
+    </bean>
+
+    <!--开启注解扫描，Controller、Service-->
+    <context:component-scan base-package="com.git.zxxxd"/>
+    <!--开启mvc注解扫描，RequestMapping-->
+    <mvc:annotation-driven/>
+
+
+    <!--配置事物管理组件-->
+    <!--<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="druidDataSource"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 开启事务注解标记@Transactional &ndash;&gt;-->
+    <!--<tx:annotation-driven  transaction-manager="txManager"/>-->
+
+    <!-- 当调用带@Transactional标记的方法时,将txManager事务管理功能切入进去 -->
+    <!--配置事物传播性-->
+    <!--<tx:advice id="txAdvice" transaction-manager="txManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="select*" propagation="REQUIRED" read-only="true" />-->
+            <!--<tx:method name="get*" propagation="REQUIRED" read-only="true" />-->
+            <!--<tx:method name="query*" propagation="REQUIRED" read-only="true" />-->
+            <!--<tx:method name="find*" propagation="REQUIRED" read-only="true" />-->
+            <!--<tx:method name="delete*" propagation="REQUIRED" />-->
+            <!--<tx:method name="update*" propagation="REQUIRED" />-->
+            <!--<tx:method name="insert*" propagation="NOT_SUPPORTED"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="target" expression="within(com.git.zxxxd.service.*)"/>-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="target"/>-->
+    <!--</aop:config>-->
+
+    <!--<bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">-->
+        <!--<constructor-arg ref="druidDataSource" />-->
+    <!--</bean>-->
+</beans>
