@@ -1,7 +1,15 @@
 package com.git.zxxxd.entity;
 
-public class Department {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "dept")
+public class Dept {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "department_name")
     private String departmentName;
 
     public Integer getId() {

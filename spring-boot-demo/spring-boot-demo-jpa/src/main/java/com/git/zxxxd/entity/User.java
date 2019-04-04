@@ -1,11 +1,21 @@
 package com.git.zxxxd.entity;
 
-public class Employee {
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
+public class User {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "email")
     private String email;
+    @Column(name = "gender")
     private Integer gender;
-    private Integer dId;
 
     public Integer getId() {
         return id;
@@ -37,13 +47,5 @@ public class Employee {
 
     public void setGender(Integer gender) {
         this.gender = gender;
-    }
-
-    public Integer getdId() {
-        return dId;
-    }
-
-    public void setdId(Integer dId) {
-        this.dId = dId;
     }
 }

@@ -1,10 +1,12 @@
 spring:
   datasource:
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@10.3.37.155:1521:orcl
-    username: herendh
-    password: herendh
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.0.104:3306/mybatis
+    username: root
+    password: manager
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
+server:
+  port: 8081
