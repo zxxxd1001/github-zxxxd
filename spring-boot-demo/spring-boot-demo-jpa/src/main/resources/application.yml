@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.0.104:3306/mybatis
+    url: jdbc:mysql://192.168.0.102:3306/mybatis
     username: root
     password: manager
   jpa:
@@ -10,3 +10,8 @@ spring:
     show-sql: true
 server:
   port: 8081
+
+zxxxd:
+  hello:
+    prefix: hello
+    suffix: world
