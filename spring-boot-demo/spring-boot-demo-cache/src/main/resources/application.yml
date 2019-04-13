@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: root
+    password: 123
+    url: jdbc:mysql://10.3.37.227:3306/mybatis #无法使用docker中的mysql 不知道为什么
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: 10.3.37.227
+server:
+  port: 8082
+logging:
+  level:
+    com:
+      git:
+        zxxxd:
+          mapper: debug

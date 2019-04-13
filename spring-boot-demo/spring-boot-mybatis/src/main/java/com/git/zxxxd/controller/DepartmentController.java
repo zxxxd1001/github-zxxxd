@@ -1,8 +1,7 @@
 package com.git.zxxxd.controller;
 
 import com.git.zxxxd.bean.Department;
-import com.git.zxxxd.mapper.DepartmentMapper;
-import org.apache.ibatis.annotations.Delete;
+import com.git.zxxxd.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,27 +10,27 @@ import org.springframework.web.bind.annotation.*;
 public class DepartmentController {
 
     @Autowired
-    private DepartmentMapper departmentMapper;
+    private DeptService deptService;
 
     @GetMapping("/get/{id}")
     public Department getDeptById(@PathVariable("id") Integer id){
-        return departmentMapper.getDeptById(id);
+        return deptService.getDeptById(id);
     }
 
-    @Delete("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public int deleteDeptById(@PathVariable("id") Integer id){
-        return departmentMapper.deleteDeptById(id);
+        return deptService.deleteDeptById(id);
     }
 
     @PostMapping("post")
-    public Department insertDeptById(@RequestBody Department d){
-        departmentMapper.insertDeptById(d);
+    public Department insertDeptById(@RequestBody Department d) throws Exception {
+        deptService.insertDeptById(d);
         return  d;
     }
 
     @PutMapping("put")
     public int updateDeptById(Department d){
-        return departmentMapper.updateDeptById(d);
+        return deptService.updateDeptById(d);
     }
 
 }

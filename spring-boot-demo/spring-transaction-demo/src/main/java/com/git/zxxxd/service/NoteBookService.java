@@ -4,6 +4,7 @@ import com.git.zxxxd.dao.NoteBookMapper;
 import com.git.zxxxd.entity.NoteBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
@@ -19,9 +20,10 @@ public class NoteBookService {
         return noteBookMapper.selectAll();
     }
 
-//    @Transactional
+//    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void insert(){
         noteBookMapper.deleteById("123");
+//        int i=new Integer(null);
         NoteBook noteBook=new NoteBook();
         noteBook.setCn_notebook_id("123");
         noteBook.setCn_user_id("12");
@@ -31,7 +33,7 @@ public class NoteBookService {
         noteBook.setCn_notebook_createtime(new Timestamp(new Date().getTime()));
         noteBookMapper.insertAll(noteBook);
     }
-    @Transactional
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, rollbackFor = Exception.class)
     public void delete(){
         noteBookMapper.deleteById("123");
     }

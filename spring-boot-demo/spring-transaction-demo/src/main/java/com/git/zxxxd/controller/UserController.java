@@ -19,15 +19,15 @@ public class UserController {
 
     @RequestMapping("/select-all")
     public List selectAll(){
-        List list=patientService.selectAll();
+        List list=noteBookService.selectAll();
         return list;
     }
     @RequestMapping("/insert")
     public void insert(){
-        patientService.insert();
+        noteBookService.insert();
     }
     @RequestMapping("/delete")
     public void delete(){
-        patientService.delete();
+        noteBookService.delete();
     }
 }
