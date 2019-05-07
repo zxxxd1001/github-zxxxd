@@ -58,4 +58,11 @@ public class SpringBootDemoMqApplicationTests {
     }
 
 
+    @Test
+    public void addMessage(){
+        for (int i=0;i<20;i++){
+            rabbitTemplate.convertAndSend("zxxxd.fanout","",new Book("红楼梦"+i,"曹雪芹"+i));
+        }
+    }
+
 }

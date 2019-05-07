@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 public class TicketServiceImpl implements TicketService {
     @Override
     public String getTicket() {
+        /**
+         * 数据库操作
+         */
         return "《厉害了，我的国》";
     }
 }

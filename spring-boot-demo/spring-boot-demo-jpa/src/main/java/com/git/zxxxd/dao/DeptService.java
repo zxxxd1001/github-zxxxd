@@ -3,6 +3,7 @@ package com.git.zxxxd.dao;
 import com.git.zxxxd.entity.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -19,6 +20,11 @@ public class DeptService {
 
     @Transactional
     public int deleteById(Integer id) {
+        entityManager.remove(entityManager.find(Dept.class,id));
+        return 1;
+    }
+
+    public int deleteByIds(Integer id) {
         entityManager.remove(entityManager.find(Dept.class,id));
         return 1;
     }
