@@ -15,6 +15,10 @@ public class ConsumerUserApplication {
 		SpringApplication.run(ConsumerUserApplication.class, args);
 	}
 
+	/**
+	 * ribbon和eureka整合后consumer可以直接调用服务而不用关系地址和端口
+	 * @return
+	 */
 	@LoadBalanced //使用负载均衡机制
 	@Bean
 	public RestTemplate restTemplate(){

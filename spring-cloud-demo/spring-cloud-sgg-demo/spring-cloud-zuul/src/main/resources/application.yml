@@ -1,0 +1,30 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: spring-cloud-zuul
+
+eureka:
+  instance:
+    instance-id: zuul-9572
+    prefer-ip-address: true
+  client:
+    service-url:
+      # 单机版配置defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka #设置与eureka server 交互的地址查询服务和注册服务都需要依赖的地址
+      #集群配置
+      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/,http://localhost:7003/eureka/
+zuul:
+  prefix: /springcloud
+  #多个用"*" ignored-services: "*"
+  ignored-services: provider-depts
+  routes:
+    mydept.serviceId: provider-depts
+    mydept.path: /mydepts/**
+
+
+
+info:
+  app.name: zuul
+  company.name: com.git.zxxxd
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
