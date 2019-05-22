@@ -33,4 +33,9 @@ public class DepartmentController {
         return deptService.updateDeptById(d);
     }
 
+    @GetMapping("testRollBackFor")
+    public int test(){
+        return deptService.test();
+    }
+
 }

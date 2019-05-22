@@ -29,4 +29,8 @@ public class UserController {
     public void delete(){
         noteBookService.delete();
     }
+    @RequestMapping("/testRollbackFor")
+    public void testRollbackFor(){
+        noteBookService.testRollbackFor();
+    }
 }

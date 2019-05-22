@@ -21,4 +21,6 @@ public class UserService {
     public void insertUser(User id) {
         entityManager.persist(id);
     }
+
+
 }

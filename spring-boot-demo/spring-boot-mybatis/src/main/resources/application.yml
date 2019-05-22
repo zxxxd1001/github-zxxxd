@@ -1,8 +1,8 @@
 spring:
   datasource:
     username: root
-    password: 123
-    url: jdbc:mysql://192.168.0.110:3306/mybatis #无法使用docker中的mysql 不知道为什么
+    password: 111111
+    url: jdbc:mysql://47.100.164.223:3306/mybatis
     driver-class-name: com.mysql.jdbc.Driver
 
     initialSize: 5

@@ -19,7 +19,7 @@ public class NoteBookService {
         return noteBookMapper.selectAll();
     }
 
-//    @Transactional
+    @Transactional
     public void insert(){
         noteBookMapper.deleteById("123");
         NoteBook noteBook=new NoteBook();
@@ -34,5 +34,21 @@ public class NoteBookService {
 //    @Transactional
     public void delete(){
         noteBookMapper.deleteById("123");
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void testRollbackFor(){
+        noteBookMapper.deleteById("123");
+
+        NoteBook noteBook=new NoteBook();
+        noteBook.setCn_notebook_id("12345");
+        noteBook.setCn_user_id("123");
+        noteBook.setCn_notebook_type_id("12345");
+        noteBook.setCn_notebook_desc("desc");
+        noteBook.setCn_notebook_name("name");
+        noteBook.setCn_notebook_createtime(new Timestamp(new Date().getTime()));
+        noteBookMapper.insertAll(noteBook);
+
+//        int i=new Integer(null);
     }
 }

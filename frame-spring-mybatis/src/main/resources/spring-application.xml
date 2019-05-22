@@ -20,9 +20,9 @@
 
     <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="username" value="root"/>
-        <property name="password" value="manager"/>
+        <property name="password" value="111111"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://192.168.0.111:3306/mybatis?characterEncoding=utf8"/>
+        <property name="url" value="jdbc:mysql://47.100.164.223:3306/mybatis?characterEncoding=utf8"/>
         <!-- 初始化连接大小 -->
         <property name="initialSize" value="1"/>
         <!-- 连接池最大使用连接数 -->
@@ -151,12 +151,12 @@
 
 
     <!--配置事物管理组件-->
-    <!--<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-        <!--<property name="dataSource" ref="druidDataSource"/>-->
-    <!--</bean>-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="druidDataSource"/>
+    </bean>
 
     <!--&lt;!&ndash; 开启事务注解标记@Transactional &ndash;&gt;-->
-    <!--<tx:annotation-driven  transaction-manager="txManager"/>-->
+    <tx:annotation-driven  transaction-manager="txManager"/>
 
     <!-- 当调用带@Transactional标记的方法时,将txManager事务管理功能切入进去 -->
     <!--配置事物传播性-->
