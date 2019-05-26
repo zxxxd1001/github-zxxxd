@@ -11,4 +11,6 @@ public interface DeptsService {
     public Depts findById(Long deptNo);
 
     public List findAll();
+
+    void updateById(Depts deptEntity);
 }

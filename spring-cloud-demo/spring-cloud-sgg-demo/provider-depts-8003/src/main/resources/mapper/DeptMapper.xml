@@ -14,4 +14,8 @@
         INSERT INTO depts(dept_name,db_source) VALUE (#{deptName},DATABASE());
     </insert>
 
+    <update id="updateById" parameterType="Depts" >
+        update depts set dept_name=#{deptName},db_source=#{dbSource} where dept_no=#{deptNo}
+    </update>
+
 </mapper>

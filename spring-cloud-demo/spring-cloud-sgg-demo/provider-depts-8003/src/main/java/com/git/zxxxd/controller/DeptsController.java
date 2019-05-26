@@ -31,6 +31,11 @@ public class DeptsController {
         return deptsService.findAll();
     }
 
+    @PostMapping(value = "updateById")
+    public void updateById(@RequestBody Depts Depts) {
+        deptsService.updateById(Depts);
+    }
+
     /**
      * 增加自己服务描述的接口
      * @return

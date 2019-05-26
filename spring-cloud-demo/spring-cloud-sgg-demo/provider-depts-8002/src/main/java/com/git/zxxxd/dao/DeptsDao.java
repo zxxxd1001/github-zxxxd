@@ -27,4 +27,6 @@ public interface DeptsDao {
      * @return
      */
     List<Depts> findAll();
+
+    void updateById(Depts deptEntity);
 }

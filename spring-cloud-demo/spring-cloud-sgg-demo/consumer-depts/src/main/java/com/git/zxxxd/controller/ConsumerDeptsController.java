@@ -2,9 +2,7 @@ package com.git.zxxxd.controller;
 
 import com.git.zxxxd.entity.Depts;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -22,8 +20,8 @@ public class ConsumerDeptsController {
     private RestTemplate restTemplate;
 
     @RequestMapping(value = "add")
-    public boolean add(Depts Depts) {
-        return restTemplate.postForObject(REST_URL_PREFIX + "/depts/add", Depts, Boolean.class);
+    public boolean add(Depts depts) {
+        return restTemplate.postForObject(REST_URL_PREFIX + "/depts/add", depts, Boolean.class);
     }
 
     @RequestMapping("findById/{deptNo}")
@@ -35,6 +33,11 @@ public class ConsumerDeptsController {
     public List findAll() {
         //三个参数：url,requestMap ResponseBean.class
         return restTemplate.getForObject(REST_URL_PREFIX + "/depts/findAll", List.class);
+    }
+
+    @PostMapping("updateById")
+    public void findAll(@RequestBody Depts depts) {
+        restTemplate.postForLocation(REST_URL_PREFIX + "/depts/updateById",depts);
     }
 
     @RequestMapping(value = "discovery")

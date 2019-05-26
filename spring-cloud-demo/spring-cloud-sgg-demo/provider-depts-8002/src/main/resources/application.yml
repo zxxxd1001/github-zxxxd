@@ -8,10 +8,12 @@ server:
 spring:
   application:
     name: provider-depts  #应用名称
+  redis:
+    host: 47.100.164.223
   datasource:
-    url: jdbc:mysql://10.3.37.169:3306/cloud02?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&verifyServerCertificate=false&useSSL=false
+    url: jdbc:mysql://47.100.164.223:3306/cloud02?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&verifyServerCertificate=false&useSSL=false
     username: root
-    password: 123
+    password: 111111
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 

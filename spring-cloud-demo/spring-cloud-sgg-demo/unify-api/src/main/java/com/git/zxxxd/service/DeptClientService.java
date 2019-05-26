@@ -22,4 +22,7 @@ public interface DeptClientService {
 
     @RequestMapping(value = "discovery")
     Object discovery();
+
+    @RequestMapping(value = "updateById", method = RequestMethod.POST)
+    void updateById(Depts depts);
 }
