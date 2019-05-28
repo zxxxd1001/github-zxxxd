@@ -5,6 +5,13 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+/**
+ * 优点： 性能高
+ *
+ * 缺点：
+ *  失效时间设置多长时间为好？如何设置的失效时间太短，方法没等执行完，锁就自动释放了，那么就会产生并发问题。
+ *  如果设置的时间太长，其他获取锁的线程就可能要平白的多等一段时间。
+ */
 @Component
 public class RedisLock {
     @Autowired

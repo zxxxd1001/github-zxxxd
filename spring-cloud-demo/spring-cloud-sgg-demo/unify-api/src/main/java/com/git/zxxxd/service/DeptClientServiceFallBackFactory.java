@@ -36,6 +36,11 @@ public class DeptClientServiceFallBackFactory implements FallbackFactory<DeptCli
             public Object discovery() {
                 return null;
             }
+
+            @Override
+            public void updateById(Depts depts) {
+
+            }
         };
     }
 }
