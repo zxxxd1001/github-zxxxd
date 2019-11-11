@@ -7,9 +7,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestAop {
     public static void main(String[] args) {
-        ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContextAop.xml");
-        ac.getBean("testDao", TestDao.class).save();
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContextAop.xml");
+        TestDao td = ac.getBean("testDao", TestDao.class);
+        td.save();
         System.out.println("---------------");
-        ac.getBean("matchingAop", MatchingAop.class).test();
+        MatchingAop ma = ac.getBean("matchingAop", MatchingAop.class);
+        ma.test();
+        System.out.println("---------------");
+        ma.set(1, 2);
+        System.out.println("---------------");
+        ma.testEx();
     }
 }
