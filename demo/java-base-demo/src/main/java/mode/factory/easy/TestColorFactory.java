@@ -1,12 +1,13 @@
 package mode.factory.easy;
 
-public abstract class AbstractColorFactory {
-    abstract Color createColor();
-
+public class TestColorFactory {
     public static void main(String[] args) {
-        ColorFactory cf=new ColorFactory();
+        AbstractColorFactory cf=new ColorFactory();
         Color c=cf.createColor();
     }
+}
+abstract class AbstractColorFactory {
+    abstract Color createColor();
 }
 class ColorFactory extends AbstractColorFactory{
     Color createColor() {

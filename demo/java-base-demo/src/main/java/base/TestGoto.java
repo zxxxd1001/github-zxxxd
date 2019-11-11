@@ -19,6 +19,14 @@ public class TestGoto {
         }
         System.out.println();
         p(2);
+        int i=1;
+        for(int c=1;c<10;c++){
+            i=i|(1<<(c-1));
+        }
+        System.out.println("--");
+        System.out.println(i);
+
+        System.out.println(i&(1<<11));
     }
     private static void p(int i){
         System.out.println("1");
