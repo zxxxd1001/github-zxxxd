@@ -8,4 +8,16 @@
         insert into employee(lastName,email,gender,d_id)
         values (#{lastName},#{email},#{gender},#{dId})
     </insert>
+
+    <insert id="insertEmp" parameterType="com.git.zxxxd.bean.Employee" statementType="CALLABLE">
+        {call insert_employee(#{lastName,mode=IN,jdbcType=VARCHAR},#{gender,mode=IN,jdbcType=INTEGER})}
+    </insert>
+
+    <select id="getEmployee" parameterType="com.git.zxxxd.bean.Employee" statementType="CALLABLE" resultType="map">
+        {call get_employee()}
+    </select>
+
+    <insert id="insertMap" parameterType="map" statementType="CALLABLE">
+        {#{r,mode=OUT,jdbcType=INTEGER}=call test(#{lastName,mode=IN,jdbcType=VARCHAR},#{gender,mode=IN,jdbcType=INTEGER})}
+    </insert>
 </mapper>

@@ -25,3 +25,10 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 server:
   port: 8081
+
+logging:
+  level:
+   com:
+    git:
+      zxxxd: debug
+

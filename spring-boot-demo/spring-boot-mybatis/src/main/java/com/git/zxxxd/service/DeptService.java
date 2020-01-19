@@ -3,6 +3,8 @@ package com.git.zxxxd.service;
 import com.git.zxxxd.bean.Department;
 import com.git.zxxxd.bean.Employee;
 import com.git.zxxxd.mapper.DepartmentMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -13,7 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 @Service
-public class DeptService {
+public class DeptService extends AbstractTest {
+    private static final Logger logger =LoggerFactory.getLogger(DeptService.class);
     @Autowired
     private DepartmentMapper departmentMapper;
     @Autowired
@@ -23,6 +26,14 @@ public class DeptService {
     private  EmployService employService;
 
     public Department getDeptById(Integer id){
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return departmentMapper.getDeptById(id);
+    }
+    public Department getDept(Integer id){
         return departmentMapper.getDeptById(id);
     }
 
@@ -73,4 +84,14 @@ public class DeptService {
         int y=new Integer(null);
         return i;
     }
+
+    @Override
+    public void testC() {
+//        int i=new Integer(null);
+        Department d=new Department();
+        d.setDepartmentName("3");
+         departmentMapper.insertDeptById(d);
+    }
+
+
 }
