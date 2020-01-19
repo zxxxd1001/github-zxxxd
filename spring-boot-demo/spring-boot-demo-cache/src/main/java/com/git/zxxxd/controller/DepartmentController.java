@@ -3,7 +3,9 @@ package com.git.zxxxd.controller;
 import com.git.zxxxd.bean.Department;
 import com.git.zxxxd.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
 @RequestMapping("dept")
@@ -23,7 +25,7 @@ public class DepartmentController {
     }
 
     @PostMapping("post")
-    public Department insertDeptById(@RequestBody Department d){
+    public Department insertDeptById(@RequestBody Department d, Model m, RedirectAttributes redirectAttributes){
         return  departmentService.insertDeptById(d);
     }
 
