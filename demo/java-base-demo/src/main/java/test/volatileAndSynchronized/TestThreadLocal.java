@@ -21,6 +21,7 @@ public class TestThreadLocal {
         });
         t.start();
 
+        new Service1().process();
     }
     class Test{
         private Long id;
@@ -36,5 +37,41 @@ public class TestThreadLocal {
             return "id=" + id +
                     ", name='" + name;
         }
+    }
+}
+
+
+class Service1 {
+    public void process() {
+        User user = new User("超哥");
+        UserContextHolder.holder.set(user);
+        new Service2().process();
+    }
+}
+
+class Service2 {
+    public void process() {
+        User user = UserContextHolder.holder.get();
+        System.out.println("Service2拿到用户名：" + user.name);
+        new Service3().process();
+    }
+}
+
+class Service3 {
+    public void process() {
+        User user = UserContextHolder.holder.get();
+        System.out.println("Service3拿到用户名：" + user.name);
+        UserContextHolder.holder.remove();
+    }
+}
+
+class UserContextHolder {
+    public static ThreadLocal<User> holder = new ThreadLocal<>();
+}
+
+class User {
+    String name;
+    public User(String name) {
+        this.name = name;
     }
 }

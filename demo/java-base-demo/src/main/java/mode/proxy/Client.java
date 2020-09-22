@@ -1,8 +1,5 @@
 package mode.proxy;
 
-/**
- * Created by zhangxd on 2016/6/1.
- */
 public class Client {
     public static void main(String[] args) {
 //        Car car=new Car();

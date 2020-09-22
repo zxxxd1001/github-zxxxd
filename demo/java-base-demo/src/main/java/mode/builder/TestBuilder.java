@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TestBuilder {
     public static void main(String[] args) {
-        Student s = new Student().anStudentBuilder().name("zhangs").age(18).build();
+        Student s = new Student().StudentBuilder().name("zhangs").age(18).build();
         System.out.println(s);
     }
 }
@@ -26,8 +26,14 @@ class Student {
         this.age = age;
         this.school = school;
     }
+    public Student(StudentBuilder studentBuilder) {
+        this.name = studentBuilder.name;
+        this.sex = studentBuilder.sex;
+        this.age = studentBuilder.age;
+        this.school = studentBuilder.school;
+    }
 
-    public StudentBuilder anStudentBuilder() {
+    public StudentBuilder StudentBuilder() {
         return new StudentBuilder();
     }
 
@@ -103,7 +109,7 @@ class Student {
         }
 
         public Student build() {
-            return new Student(name, sex, age, school);
+            return new Student(this);
         }
 
     }

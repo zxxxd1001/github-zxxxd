@@ -48,7 +48,7 @@ public class DirectExchange {
     private void bindConsumer(final String name,String... routingKeys)throws Exception{
         Connection connection = ConnectionUtils.getConnection();
         Channel channel = connection.createChannel();
-        channel.exchangeDeclare(DirectExchange.EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
+        channel.exchangeDeclare(DirectExchange.EXCHANGE_NAME, BuiltinExchangeType.DIRECT,false, true, null);
         String queueName = channel.queueDeclare().getQueue();
         for(String routingKey : routingKeys){
             channel.queueBind(queueName, DirectExchange.EXCHANGE_NAME,  routingKey);

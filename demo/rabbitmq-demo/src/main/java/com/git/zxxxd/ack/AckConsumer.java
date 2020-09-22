@@ -11,11 +11,13 @@ import java.io.UnsupportedEncodingException;
  */
 public class AckConsumer {
     public static void main(String[] args)  throws Exception{
-        //建立socket连接
         Connection connection = ConnectionUtils.getConnection();
-
-        /* 创建Channel，含有处理信息的大部分API */
         Channel channel = connection.createChannel();
+//        consumer(channel);
+        consumer1(channel);
+    }
+
+    private static void consumer(Channel channel)throws Exception{
         //声明一个Queue，用来获取消息。QUEUE_NAME需要与Producer端相同
         channel.queueDeclare("test-ack", false, false, false, null);
 
@@ -42,6 +44,37 @@ public class AckConsumer {
                 }
             }
         };
+
+        // 手工签收 必须要关闭 autoAck = false
         channel.basicConsume("test-ack", false, consumer);
+    }
+
+    private static void consumer1(Channel channel)throws Exception{
+        String exchangeName = "test_ack_exchange";
+        String queueName = "test_ack_queue";
+        String routingKey = "ack.#";
+        channel.exchangeDeclare(exchangeName, "topic", true, false, null);
+        channel.queueDeclare(queueName, true, false, false, null);
+        channel.queueBind(queueName, exchangeName, routingKey);
+
+        // 手工签收 必须要关闭 autoAck = false
+        channel.basicConsume(queueName, false, new DefaultConsumer(channel){
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.err.println("-----------consume message----------");
+                System.err.println("body: " + new String(body));
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if((Integer)properties.getHeaders().get("num") == 0) {
+                    this.getChannel().basicNack(envelope.getDeliveryTag(), false, true);
+                } else {
+                    this.getChannel().basicAck(envelope.getDeliveryTag(), false);
+                }
+            }
+
+        });
     }
 }

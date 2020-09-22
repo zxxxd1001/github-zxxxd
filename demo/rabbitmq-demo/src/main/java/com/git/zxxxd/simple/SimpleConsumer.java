@@ -28,6 +28,7 @@ public class SimpleConsumer {
                 System.out.println("SimpleConsumer消费者获取消息：" + message );
             }
         };
+        //(String queue, boolean autoAck, Consumer callback)
         channel.basicConsume("test-simple", true, consumer);
     }
 }

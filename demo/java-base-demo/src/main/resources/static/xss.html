@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" class="ip"/>
+<button onclick="clickTest()">提交</button>
+<div class="div">div</div>
+<span><xmp>输入：<a href=http://www.baidu.com target=”点击我“>点击我</a> | <a href=javascript:alert(1)>点击我</a>，点击提交就完成了xss攻击</xmp></span>
+<script type="text/javascript">
+    function clickTest() {
+        var elementsByClassName = document.getElementsByClassName("div")[0];
+        var ip=document.getElementsByClassName("ip")[0];
+        elementsByClassName.innerHTML=ip.value;
+    }
+</script>
+</body>
+</html>

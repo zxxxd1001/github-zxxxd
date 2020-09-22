@@ -13,11 +13,13 @@ public class TestFutureAndExecutorService {
                 return "String";
             }
         });
+        System.out.println("任务是否完成："+t.isDone());
         service.submit(new Runnable() {
             public void run() {
                 System.out.println("开启");
             }
         });
+        System.out.println("任务是否完成："+t.isDone());
         service.shutdown();
         try {
             System.out.println(t.get());

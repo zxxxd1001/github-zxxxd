@@ -27,7 +27,7 @@ public class SenderDirect implements RabbitTemplate.ConfirmCallback,RabbitTempla
     }
 
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-        System.out.println("CallBackConfirm UUID: " + correlationData.getId());
+//        System.out.println("CallBackConfirm UUID: " + correlationData.getId());
 
         if(ack) {
             System.out.println("CallBackConfirm 消息消费成功！");

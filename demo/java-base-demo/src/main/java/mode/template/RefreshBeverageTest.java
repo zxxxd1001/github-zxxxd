@@ -1,7 +1,7 @@
 package mode.template;
 
 /**
- * Created by zhangxd on 2016/6/1.
+ * 模版模式
  */
 public class RefreshBeverageTest {
     public static void main(String[] args) {

@@ -38,7 +38,7 @@ public class TestLock {
         ttt.start();
         tt.start();
 
-        ttt.interrupt();
+//        ttt.interrupt();
 
     }
     private void testLock(){
@@ -62,7 +62,7 @@ public class TestLock {
                 System.out.println(Thread.currentThread().getName()+":得到锁");
                 Thread.sleep(1000);
             }catch (Exception e){
-
+                e.printStackTrace();
             }finally {
                 lock.unlock();
                 System.out.println(Thread.currentThread().getName()+":释放锁");
@@ -78,8 +78,8 @@ public class TestLock {
             if (lock.tryLock(4, TimeUnit.SECONDS)) {
                 try {
                     System.out.println(Thread.currentThread().getName() + ":得到锁");
-                    Thread.sleep(5000);
-//                    Thread.sleep(2000);
+//                    Thread.sleep(5000);
+                    Thread.sleep(2000);
                 } finally {
                     lock.unlock();
                     System.out.println(Thread.currentThread().getName()+":释放锁");

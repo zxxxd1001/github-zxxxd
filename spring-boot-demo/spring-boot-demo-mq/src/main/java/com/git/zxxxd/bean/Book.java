@@ -1,6 +1,8 @@
 package com.git.zxxxd.bean;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book   implements Serializable {
     private String bookName;
     private String author;
 

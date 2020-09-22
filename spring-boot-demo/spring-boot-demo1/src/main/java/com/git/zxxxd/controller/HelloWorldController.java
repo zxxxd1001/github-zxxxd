@@ -24,4 +24,9 @@ public class HelloWorldController {
         logger.error("这是error日志...");
         return "hello World!";
     }
+
+    @RequestMapping("hello")
+    public String hello(String s) {
+        return "hello "+s;
+    }
 }

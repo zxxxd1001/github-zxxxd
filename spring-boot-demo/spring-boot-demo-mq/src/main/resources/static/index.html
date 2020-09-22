@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .framework-iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+
+        }
+
+        .navbar-right {
+            position: relative;
+            top: 1px;
+            right: 50px;
+        }
+    </style>
+</head>
+<body>
+<header class="login-header">
+<button onclick="clickSrc('1.html')">1.hmtl</button>
+<button onclick="clickSrc('2.html')">2.hmtl</button>
+<button onclick="clickSrc('3.html')">3.hmtl</button>
+<button onclick="clickSrc('4.html')">4.hmtl</button>
+<button onclick="clickSrc('5.html')">5.hmtl</button>
+<button onclick="clickSrc('6.html')">6.hmtl</button>
+<button onclick="clickSrc('7.html')">7.hmtl</button>
+<button onclick="clickSrc('8.html')">8.hmtl</button>
+<button onclick="clickSrc('9.html')">9.hmtl</button>
+<button onclick="clickSrc('10.html')">10.hmtl</button>
+</header>
+<section class="login-section">
+    <iframe class="framework-iframe" src="1.html" frameborder=0 marginheight=0 marginwidth=0 scrolling="auto"></iframe>
+</section>
+
+<script src="./jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        $(".login-section").css("height", $(window).height() - $(".login-header").height());
+        $(window).resize(function () {
+            $(".login-section").css("height", $(window).height() - $(".login-header").height());
+        });
+    });
+
+    function clickSrc(index){
+        $(".framework-iframe").attr("src", index);
+    }
+</script>
+</body>
+</html>

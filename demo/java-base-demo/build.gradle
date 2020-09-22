@@ -10,7 +10,7 @@ project.ext {
     junitVersion = '4.12'
     poiVersion='3.15-beta1'
     jxlVersion="2.6.12"
-    nettyVersion='5.0.0.Alpha1'
+    nettyVersion='4.1.50.Final'
 }
 
 repositories {

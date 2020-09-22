@@ -9,10 +9,12 @@ public class SendSimple {
         //创建Channel，含有处理信息的大部分API
         Channel channel = connection.createChannel();
         //声明一个Queue，用来存放消息
+        //queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete, Map<String, Object> arguments)
         channel.queueDeclare("test-simple", false, false, false, null);
         //消息内容
         String message = "hello, little qute rabbitmq!";
         //发布消息
+        //basicPublish(String exchange, String routingKey, BasicProperties props, byte[] body)
         channel.basicPublish("", "test-simple", null, message.getBytes());
         //发布消息成功提示信息
         System.out.println("SendSimple生产者成功发送信息：" +  message);

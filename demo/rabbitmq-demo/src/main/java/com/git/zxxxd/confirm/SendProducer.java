@@ -12,7 +12,27 @@ public class SendProducer {
         SendProducer s = new SendProducer();
 //        s.producer();
 //        s.producer1();
-        s.producer2();
+//        s.producer2();
+        s.producer3();
+    }
+
+    private void producer3() throws Exception{
+        Connection connection = ConnectionUtils.getConnection();
+        Channel channel = connection.createChannel();
+        //指定我们的消息投递模式: 消息的确认模式
+        channel.confirmSelect();
+        //发送一条消息
+        channel.basicPublish("test_confirm_exchange", "confirm.save", null, "Hello RabbitMQ Send confirm message!".getBytes());
+
+        //添加一个确认监听
+        channel.addConfirmListener(new ConfirmListener() {
+            public void handleNack(long deliveryTag, boolean multiple) throws IOException {
+                System.err.println("-------no ack!-----------");
+            }
+            public void handleAck(long deliveryTag, boolean multiple) throws IOException {
+                System.err.println("-------ack!-----------");
+            }
+        });
     }
 
     private void producer2() throws Exception {
@@ -21,7 +41,7 @@ public class SendProducer {
         Map<String, Object> args = new HashMap<String, Object>();
         args.put("x-max-length", 10);
         //创建队列
-        channel.queueDeclare("test-listener-confirm", false, false, false, args);
+        channel.queueDeclare("test-listener-confirm", true, false, true, args);
 
         channel.confirmSelect();
         String str="hello,addConfirmListener,ConfirmListener";
@@ -46,7 +66,7 @@ public class SendProducer {
      * 普通confirm模式，每发送一条消息，
      * 调用waitForConfirms()方法等待服务端confirm，
      * 这实际上是一种串行的confirm，
-     * 每publish一条消息之后就等待服务端confirm，
+     * 每publish一条消息之后就等待服务端confirm，basicQos
      * 如果服务端返回false或者超时时间内未返回，客户端进行消息重传；
      */
     public void producer() throws Exception {

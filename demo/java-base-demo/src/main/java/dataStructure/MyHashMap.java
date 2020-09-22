@@ -1,4 +1,4 @@
-package dataStructure;
+package datastructure;
 
 import java.io.IOException;
 import java.io.InvalidObjectException;
