@@ -1,0 +1,15 @@
+server:
+  port: 9001
+
+#这个path就是json的访问request mapping.可以自定义，防止与自身代码冲突。
+#http://localhost:8080/swagger-ui.html
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api-docs
+
+#  Eureka 控制台快速查看 Swagger 文档
+#eureka.instance.status-page-url=http://${spring.cloud.client.ip-address}: ${server.port}/swagger-ui.html
+#默认的请求头名称是 Token，这里改成了 Authorization，通过配置文件修改：
+#swagger.authorization.key-name=Authorization

@@ -1,0 +1,16 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        gradlePluginPortal()
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'org.springframework.boot') {
+                print("test=========>:" + requested.version)
+                useModule("org.springframework.boot:spring-boot-gradle-plugin:${requested.version}")
+            }
+        }
+    }
+}
+rootProject.name = 'spring-boot-swagger'
