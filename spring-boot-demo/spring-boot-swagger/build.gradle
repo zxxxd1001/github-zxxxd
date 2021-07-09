@@ -19,6 +19,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'com.spring4all:swagger-spring-boot-starter:1.7.0.RELEASE'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
