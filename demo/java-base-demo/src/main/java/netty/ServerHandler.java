@@ -2,19 +2,16 @@ package netty;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
 
 public class ServerHandler extends ChannelHandlerAdapter {
-    @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
         //客户端与服务端创建连接的时候调用
         System.out.println("channelActive");
         ctx.channel().pipeline().fireChannelRead("hello world");
     }
 
-    @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-        super.channelRegistered(ctx);
         System.out.println("channelRegistered");
     }
 
@@ -32,9 +29,7 @@ public class ServerHandler extends ChannelHandlerAdapter {
         cause.printStackTrace();
     }
 
-    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
         System.out.println("ServerHandler-channelRead："+msg);
         throw new BusinessException("from OutBoundHandlerB");
     }

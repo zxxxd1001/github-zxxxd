@@ -142,4 +142,9 @@ public class MyWebSocketHandler extends SimpleChannelInboundHandler<Object> {
             f.addListener(ChannelFutureListener.CLOSE);
         }
     }
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+
+    }
 }
