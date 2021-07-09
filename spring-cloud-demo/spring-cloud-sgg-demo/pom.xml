@@ -14,8 +14,6 @@
         <module>unify-api</module>
         <module>unify-model</module>
         <module>spring-cloud-euraka</module>
-        <module>spring-cloud-erueka-7002</module>
-        <module>spring-cloud-erueka-7003</module>
         <module>provider-depts-8002</module>
         <module>provider-depts-8003</module>
         <module>consumer-depts-feign</module>
