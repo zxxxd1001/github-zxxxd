@@ -1,0 +1,11 @@
+#server:
+#  port: 443
+#  ssl:
+#    key-store: 3702162_wechat.coding-jiangzh.com.pfx
+#    key-store-password: 49Jk65Pi
+
+wechat:
+  kafka:
+    bootstrap_servers: "127.0.0.1:9092"
+    acks_config: "all"
+    partitioner_class: "com.git.zxxxd.producer.SamplePartition"
