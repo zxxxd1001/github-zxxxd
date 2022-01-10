@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    one:
+      username: root
+      password: 111111
+      url: jdbc:mysql://47.96.149.203:3306/mybatis?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+      driver-class-name: com.mysql.jdbc.Driver
+    two:
+      url: jdbc:mysql://rm-bp193nfeo42w1d453oo.mysql.rds.aliyuncs.com:3306/mybatis?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+      username: alyzxd
+      password: Zhang1995
+      driver-class-name: com.mysql.jdbc.Driver
+server:
+  port: 8082
+logging:
+  level:
+    com:
+      git:
+        zxxxd:
+          mapper: debug
