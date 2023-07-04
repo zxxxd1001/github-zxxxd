@@ -58,6 +58,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+<!--        https://blog.csdn.net/weixin_42551369/article/details/129194864-->
+<!--        <dependency>-->
+<!--            <groupId>com.baomidou</groupId>-->
+<!--            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
+<!--            <version>3.6.1</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
