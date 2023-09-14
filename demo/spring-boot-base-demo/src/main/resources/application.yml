@@ -1,0 +1,6 @@
+server:
+  port: 18082
+
+logging:
+  level:
+    spring: trace
