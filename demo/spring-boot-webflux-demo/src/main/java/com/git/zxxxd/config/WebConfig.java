@@ -1,6 +1,7 @@
 package com.git.zxxxd.config;
 
 import com.git.zxxxd.controller.MyWebFluxController;
+import com.git.zxxxd.controller.UserController;
 import com.git.zxxxd.handler.GlobalResponseBodyResultHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +35,7 @@ public class WebConfig {
     }
 
     @Bean
-    public MyWebFluxController myWebFluxController(){
+    public MyWebFluxController myWebFluxController() {
         return new MyWebFluxController();
     }
 
@@ -49,5 +50,26 @@ public class WebConfig {
     public GlobalResponseBodyResultHandler responseWrapper(ServerCodecConfigurer serverCodecConfigurer,
                                                            RequestedContentTypeResolver requestedContentTypeResolver) {
         return new GlobalResponseBodyResultHandler(serverCodecConfigurer.getWriters(), requestedContentTypeResolver);
+    }
+
+    @Bean
+    public UserController userController() {
+        return new UserController();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> userRouterFunction(UserController userController) {
+//        return RouterFunctions.nest(RequestPredicates.path("/user"),
+//                RouterFunctions.route(RequestPredicates.GET("/getAllUser"), userController::getAllUsers)
+//                        .andRoute(RequestPredicates.POST("/addUser"), userController::addUser)
+//                        .andRoute(RequestPredicates.DELETE("/{userId}"), userController::deleteUser));
+        return RouterFunctions.nest(RequestPredicates.path("/user"),
+                RouterFunctions.route()
+                        .GET("/getUserById/{id}", userController::getUserById)
+                        .GET("/getAllUser", userController::getAllUsers)
+                        .POST("/addUser", RequestPredicates.accept(MediaType.APPLICATION_JSON), userController::addUser)
+                        .DELETE("/deleteUser", userController::deleteUser)
+                        .build()
+        );
     }
 }

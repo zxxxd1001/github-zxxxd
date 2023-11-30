@@ -19,7 +19,7 @@ public class ErrorHandler implements ErrorWebExceptionHandler {
         if (exchange.getResponse().isCommitted()) {
             return Mono.error(throwable);
         }
-
+        throwable.printStackTrace();
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
         response.setStatusCode(HttpStatus.OK);
         return response.writeWith(Mono.fromSupplier(() -> {

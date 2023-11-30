@@ -25,7 +25,7 @@ public class TestController {
      * "asd":"Asd"
      * }
      */
-    @PostMapping("/hello")
+    @PostMapping("/error")
     public Map<String, Object> hello(ServerWebExchange exchange, @RequestBody Map<String, Object> map) {
         Map<String, Object> stringObjectMap = Optional.ofNullable(map)
                 .map(m -> {
@@ -61,7 +61,7 @@ public class TestController {
          */
         Map<String, Object> req = new HashMap<>();
         req.put("asd", "Asd");
-        Mono<ResponseEntity<Map>> responseEntityMono = webClient.post().uri("http://127.0.0.1:18083/hello")
+        Mono<ResponseEntity<Map>> responseEntityMono = webClient.post().uri("http://127.0.0.1:18083/error")
                 .accept(MediaType.APPLICATION_JSON)
                 .body(Mono.just(req), Map.class)
                 .exchange()
