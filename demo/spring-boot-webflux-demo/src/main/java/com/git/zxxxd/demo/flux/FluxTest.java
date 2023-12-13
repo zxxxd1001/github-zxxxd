@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 
 public class FluxTest {
 
-    private void testJustCreateDelayInterval(){
+    private void testJustCreateDelayInterval() {
         Flux<String> just = Flux.just("!@3");
         Flux<Object> objectFlux = Flux.create(sink -> {
             System.out.println(sink);
             // FluxSink 除了 next()、complete() 和 error() 这三个核心方法外，
             // 还定义了背压策略，并且可以在一次调用中产生多个元素
-            for (int i=0;i<2;i++) {
+            for (int i = 0; i < 2; i++) {
                 sink.next(i);
             }
             sink.complete();
@@ -31,9 +31,9 @@ public class FluxTest {
         //SynchronousSink 组件包括 next()、complete() 和 error() 这三个核心方法。
         //从 SynchronousSink 组件的命名上就能知道它是一个同步的 Sink 组件，也就是说元素的生成过程是同步执行的。
         //这里要注意的是 next() 方法只能最多被调用一次。
-        Flux<Object> generate = Flux.generate(()->1,(i,synchronousSink) -> {
+        Flux<Object> generate = Flux.generate(() -> 1, (i, synchronousSink) -> {
             synchronousSink.next(i);
-            if (i==5) {
+            if (i == 5) {
                 synchronousSink.complete();
             }
             return ++i;
